@@ -2,8 +2,400 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CellWaveR | Contact</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>CellWaveR | Contact Us</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body { 
+      font-family: 'Arial', 'Helvetica', sans-serif; 
+      margin: 0; 
+      background: #fff;
+      color: #111; 
+      line-height: 1.6;
+    }
+
+    header {
+      background: #f8f8f8;
+      padding: 0 20px;
+      box-sizing: border-box;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: 12vh;
+      min-height: 70px;
+      max-height: 120px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 120px;
+    }
+
+    .logo {
+      height: 80%;
+      max-height: 64px;
+      min-height: 40px;
+      cursor: pointer;
+    }
+
+    main { 
+      padding: 40px 20px; 
+      padding-top: calc(12vh + 60px);
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 80vh;
+    }
+
+    /* 页面标题 */
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .page-header p {
+      font-size: 1.2em;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* 联系方式网格 */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .contact-section {
+      background: #f9f9f9;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .contact-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(59, 179, 179, 0.15);
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      background: #3bb3b3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .contact-section h2 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 1.5em;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .contact-section p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* 邮箱链接样式 */
+    .email-link {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #3bb3b3;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 0.25rem;
+    }
+
+    .email-link:hover {
+      background: #2a9999;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
+    }
+
+    /* LinkedIn 部分 */
+    .linkedin-section {
+      background: linear-gradient(135deg, #0077b5, #005885);
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .linkedin-section h2 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 1.8em;
+      margin-bottom: 1rem;
+    }
+
+    .linkedin-section p {
+      font-size: 1.1em;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .linkedin-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      background: white;
+      color: #0077b5;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+    }
+
+    .linkedin-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .linkedin-icon {
+      width: 24px;
+      height: 24px;
+      background: #0077b5;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* 联系表单 */
+    .contact-form-section {
+      background: #f9f9f9;
+      border-radius: 16px;
+      padding: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-form-section h2 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #111;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.8rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #3bb3b3;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-button {
+      background: #3bb3b3;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      margin: 2rem auto 0 auto;
+    }
+
+    .submit-button:hover {
+      background: #2a9999;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
+    }
+
+    /* 导航栏样式 */
+    .nav-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-current {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 8px;
+      background: #f8f8f8;
+      transition: background 0.3s ease;
+      font-size: clamp(16px, 2.2vw, 24px);
+      line-height: 1.1;
+    }
+
+    .nav-current:hover {
+      background: #f0f0f0;
+    }
+
+    .nav-list {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      min-width: 180px;
+      z-index: 2000;
+      flex-direction: column;
+      padding: 8px 0;
+    }
+
+    .nav-menu:hover .nav-list,
+    .nav-menu:focus-within .nav-list {
+      display: flex;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 12px 20px;
+      color: #111;
+      text-decoration: none;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      text-align: center;
+      margin: 0 8px;
+    }
+
+    .nav-list a:hover {
+      background: rgba(59, 179, 179, 0.1);
+      color: #3bb3b3;
+      font-weight: bold;
+    }
+
+    .nav-list a.active, .nav-current.active {
+      color: #3bb3b3;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 1em;
+      color: #fff;
+      background: #3a4667;
+      padding: 30px 0;
+      margin-top: 4rem;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-form-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      main {
+        padding: 20px 15px;
+        padding-top: calc(8vh + 40px);
+      }
+      
+      .nav-current {
+        padding: 6px 12px;
+        font-size: clamp(14px, 4vw, 18px);
+      }
+      
+      header {
+        padding: 0 12px;
+        height: 8vh;
+        min-height: 60px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-section,
+      .linkedin-section,
+      .contact-form-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .email-link {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -16,20 +408,131 @@
           <a href="../technology/index.html">Technology</a>
           <a href="../applications/index.html">Applications</a>
           <a href="../about/index.html">About Us</a>
+          <a href="../leadership/index.html">Leadership Team</a>
           <a href="../contact/index.html" class="active">Contact</a>
         </div>
       </div>
     </nav>
   </header>
+
   <main>
-    <section>
-      <h1>Contact</h1>
-      <img src="../assets/sample.jpg" alt="Contact" style="max-width:100%;max-height:250px;">
-      <p>Contact us via email, phone, or the form below...</p>
-    </section>
+    <div class="page-header">
+      <h1>Contact Us</h1>
+      <p>Get in touch with CellWave Technologies to learn more about our innovative cell sorting solutions</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Email Contact Section -->
+      <div class="contact-section">
+        <div class="contact-icon">✉</div>
+        <h2>Email Us</h2>
+        <p>For general inquiries, product information, or to request a product brochure, please reach out to our team:</p>
+        <a href="mailto:robertfu@cellwavetech.com" class="email-link">robertfu@cellwavetech.com</a>
+        <a href="mailto:ye.ai@cellwavetech.com" class="email-link">ye.ai@cellwavetech.com</a>
+      </div>
+
+      <!-- Product Information Section -->
+      <div class="contact-section">
+        <div class="contact-icon">📋</div>
+        <h2>Product Brochure</h2>
+        <p>Interested in learning more about our CellWave<sup>R</sup> technology? Request our detailed product brochure with technical specifications and application examples.</p>
+        <a href="mailto:robertfu@cellwavetech.com?subject=Product Brochure Request" class="email-link">Request Brochure</a>
+      </div>
+    </div>
+
+    <!-- LinkedIn Section -->
+    <div class="linkedin-section">
+      <h2>Connect with Us on LinkedIn</h2>
+      <p>Follow CellWave Technologies on LinkedIn for the latest updates, research breakthroughs, and industry insights.</p>
+      <a href="https://sg.linkedin.com/company/cellwave-technologies" target="_blank" rel="noopener noreferrer" class="linkedin-button">
+        <div class="linkedin-icon">in</div>
+        Visit Our LinkedIn Page
+      </a>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="contact-form-section">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="organization">Organization</label>
+            <input type="text" id="organization" name="organization">
+          </div>
+          <div class="form-group">
+            <label for="position">Position/Title</label>
+            <input type="text" id="position" name="position">
+          </div>
+          <div class="form-group">
+            <label for="inquiry">Inquiry Type</label>
+            <select id="inquiry" name="inquiry">
+              <option value="">Select an option</option>
+              <option value="product-info">Product Information</option>
+              <option value="technical-support">Technical Support</option>
+              <option value="partnership">Partnership Opportunities</option>
+              <option value="research-collaboration">Research Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Please describe your inquiry or how we can help you..." required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+    </div>
   </main>
+
   <footer class="footer">
     COPYRIGHT CELLWAVE TECHNOLOGIES 2020. ALL RIGHTS RESERVED.
   </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Create email content
+      const subject = `Contact Form Submission - ${data.inquiry || 'General Inquiry'}`;
+      const body = `
+Name: ${data.firstName} ${data.lastName}
+Email: ${data.email}
+Organization: ${data.organization || 'Not specified'}
+Position: ${data.position || 'Not specified'}
+Inquiry Type: ${data.inquiry || 'Not specified'}
+
+Message:
+${data.message}
+      `.trim();
+      
+      // Create mailto link
+      const mailtoLink = `mailto:robertfu@cellwavetech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show confirmation
+      alert('Thank you for your message! Your email client should now open with the pre-filled message.');
+      
+      // Reset form
+      this.reset();
+    });
+  </script>
 </body>
-</html> 
+</html>
