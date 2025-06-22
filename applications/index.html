@@ -3,7 +3,335 @@
 <head>
   <meta charset="UTF-8">
   <title>CellWaveR | Applications</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff; color: #111; }
+    header, footer { background: #f8f8f8; padding: 0 20px; box-sizing: border-box; min-height: 70px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: #f8f8f8;
+      height: 12vh;
+      min-height: 70px;
+      max-height: 120px;
+    }
+    nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 120px;
+    }
+    .logo {
+      height: 80%;
+      max-height: 64px;
+      min-height: 40px;
+      cursor: pointer;
+    }
+
+    main { 
+      padding: 40px 20px; 
+      padding-top: calc(12vh + 40px);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 页面标题和导航 */
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 3em;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    /* 应用导航栏 */
+    .app-nav {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .app-nav h3 {
+      margin-bottom: 1rem;
+      color: #3bb3b3;
+      font-size: 1.2em;
+    }
+
+    .app-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .app-nav > ul > li {
+      margin-bottom: 0.8rem;
+    }
+
+    .app-nav ul ul {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .app-nav ul ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .app-nav a {
+      color: #111;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .app-nav a:hover {
+      background: #3bb3b3;
+      color: white;
+      transform: translateX(5px);
+    }
+
+    /* 应用部分样式 */
+    .application-section {
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .application-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .app-content {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    .app-text {
+      flex: 1.2;
+    }
+
+    .app-text h2 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 2.2em;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .app-text h3 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 1.8em;
+      margin-bottom: 1rem;
+      color: #3bb3b3;
+    }
+
+    .app-text p {
+      font-size: 1.1em;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-stat {
+      background: #e6f7ff;
+      padding: 1rem;
+      border-left: 4px solid #3bb3b3;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .highlight-stat strong {
+      color: #3bb3b3;
+      font-size: 1.2em;
+    }
+
+    .app-visual {
+      flex: 1;
+      text-align: center;
+    }
+
+    .app-image {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .app-image:hover {
+      transform: scale(1.02);
+    }
+
+    .image-caption {
+      font-size: 0.9em;
+      color: #666;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* 数据展示卡片 */
+    .data-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .data-card {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .data-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .data-card h4 {
+      color: #3bb3b3;
+      font-size: 1.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .data-card .stat {
+      font-size: 2em;
+      font-weight: bold;
+      color: #111;
+      margin: 0.5rem 0;
+    }
+
+    .data-card .description {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    /* 导航栏样式 */
+    .nav-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-current {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 6px;
+      background: #f8f8f8;
+      transition: background 0.2s;
+      font-size: clamp(16px, 2.2vw, 24px);
+      line-height: 1.1;
+    }
+
+    .nav-current:hover {
+      background: #f0f0f0;
+    }
+
+    .nav-list {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      border-radius: 8px;
+      min-width: 160px;
+      z-index: 2000;
+      flex-direction: column;
+      padding: 8px 0;
+    }
+
+    .nav-menu:hover .nav-list,
+    .nav-menu:focus-within .nav-list {
+      display: flex;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 12px 24px;
+      color: #111;
+      text-decoration: none;
+      font-size: 1.05em;
+      transition: background 0.2s;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .nav-list a:hover {
+      background: #e6f7ff;
+      font-weight: bold;
+    }
+
+    .nav-list a.active, .nav-current.active {
+      color: #3bb3b3;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 1em;
+      color: #fff;
+      background: #3a4667;
+      padding: 20px 0;
+      margin-top: 4rem;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 900px) {
+      .app-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .app-text h2 {
+        font-size: 1.8em;
+        text-align: center;
+      }
+      
+      .app-text h3 {
+        font-size: 1.5em;
+        text-align: center;
+      }
+      
+      .data-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      main {
+        padding: 20px 15px;
+        padding-top: calc(8vh + 20px);
+      }
+      
+      .nav-current {
+        padding: 6px 12px;
+        font-size: clamp(14px, 4vw, 18px);
+      }
+      
+      header {
+        padding: 0 12px;
+        height: 8vh;
+        min-height: 60px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -22,9 +350,15 @@
       </div>
     </nav>
   </header>
+
   <main>
-    <section>
+    <div class="page-header">
       <h1>Applications</h1>
+    </div>
+
+    <!-- 应用导航 -->
+    <div class="app-nav">
+      <h3>Navigate to Applications:</h3>
       <ul>
         <li><a href="#deadcell">Dead cell removal: scRNAseq</a></li>
         <li><a href="#other">Other applications</a>
@@ -35,33 +369,156 @@
           </ul>
         </li>
       </ul>
+    </div>
+
+    <!-- Dead cell removal section -->
+    <section id="deadcell" class="application-section">
+      <div class="app-content">
+        <div class="app-text">
+          <h2>Dead Cell Removal: scRNAseq</h2>
+          <p>Dead cells present a significant challenge for single cell RNA sequencing (scRNAseq). Existing methods for dead cell removal also remove a significant number of live cells, compromising sample quality and experimental results.</p>
+          
+          <div class="highlight-stat">
+            <strong>Key Achievement:</strong> Over 94% of dead cells removed while preserving live cell population
+          </div>
+          
+          <p>Dead cells can be removed using CellWave<sup>R</sup> by labelling the dead cells with a dead cell staining kit. Live cells flow through the sorting chip unperturbed, whilst the dead cells are actively removed.</p>
+          
+          <p>This gentle approach ensures that your valuable sample maintains its integrity for downstream scRNAseq analysis, providing more accurate and reliable sequencing results.</p>
+        </div>
+        <div class="app-visual">
+          <img src="../assets/img/applications/DeadCellRemoval.png" alt="Dead cell removal process" class="app-image">
+          <p class="image-caption">Before and after dead cell removal showing live cell enrichment</p>
+        </div>
+      </div>
+      
+      <div class="data-cards">
+        <div class="data-card">
+          <h4>Dead Cell Removal</h4>
+          <div class="stat">94%</div>
+          <p class="description">of dead cells successfully removed</p>
+        </div>
+        <div class="data-card">
+          <h4>Live Cell Recovery</h4>
+          <div class="stat">97%</div>
+          <p class="description">live cell fraction after sorting</p>
+        </div>
+        <div class="data-card">
+          <h4>Starting Viability</h4>
+          <div class="stat">59%</div>
+          <p class="description">initial live cell percentage</p>
+        </div>
+      </div>
     </section>
-    <section id="deadcell">
-      <h2>Dead cell removal: scRNAseq</h2>
-      <img src="../assets/sample.jpg" alt="scRNAseq" style="max-width:100%;max-height:250px;">
-      <p>Application details for scRNAseq...</p>
+
+    <!-- Other Applications Header -->
+    <section id="other" class="application-section">
+      <h2 style="text-align: center; margin-bottom: 2rem; font-family: 'Arial Black', Arial, sans-serif;">Other Applications</h2>
     </section>
-    <section id="other">
-      <h2>Other Applications</h2>
+
+    <!-- Cardiomyocytes section -->
+    <section id="cardio" class="application-section">
+      <div class="app-content">
+        <div class="app-text">
+          <h3>Cardiomyocytes Sorting</h3>
+          <p>Heart cells (cardiomyocytes) are among the most fragile cell types, making their purification extremely challenging with conventional sorting methods. Traditional FACS can kill up to 50% of these precious cells.</p>
+          
+          <div class="highlight-stat">
+            <strong>Breakthrough Result:</strong> Cardiomyocyte purity increased from ~50% to 97% with >95% viability
+          </div>
+          
+          <p>CellWave<sup>R</sup>'s gentle acoustic sorting ensures the viability of even the most fragile cell types like cardiomyocytes. This breakthrough enables researchers to work with pure, viable heart cells for regenerative medicine, drug screening, and cardiac research.</p>
+          
+          <p><em>"If there were a system capable of purifying heart cells and maintaining viability, it would be immensely beneficial for the scientific community."</em> - Asst. Prof. Chrishan Ramachandra, Stem Cell Scientist</p>
+        </div>
+        <div class="app-visual">
+          <img src="../assets/img/applications/CMPurity.png" alt="Cardiomyocytes purity comparison" class="app-image">
+          <p class="image-caption">Cardiomyocyte purity before and after CellWave sorting</p>
+        </div>
+      </div>
+      
+      <div class="data-cards">
+        <div class="data-card">
+          <h4>Purity Achievement</h4>
+          <div class="stat">97%</div>
+          <p class="description">final cardiomyocyte purity</p>
+        </div>
+        <div class="data-card">
+          <h4>Cell Viability</h4>
+          <div class="stat">>95%</div>
+          <p class="description">post-sort cell viability maintained</p>
+        </div>
+        <div class="data-card">
+          <h4>Viability Loss</h4>
+          <div class="stat">3-4%</div>
+          <p class="description">vs 50% with traditional FACS</p>
+        </div>
+      </div>
     </section>
-    <section id="cardio">
-      <h3>Cardiomyocytes</h3>
-      <img src="../assets/sample.jpg" alt="Cardiomyocytes" style="max-width:100%;max-height:250px;">
-      <p>Application details for Cardiomyocytes...</p>
+
+    <!-- Monocytes section -->
+    <section id="monocytes" class="application-section">
+      <div class="app-content">
+        <div class="app-text">
+          <h3>Monocyte Subtypes Sorting</h3>
+          <p>Monocytes are a diverse population of immune cells with distinct subtypes that play different roles in immune responses. Precise separation of monocyte subtypes is crucial for immunology research and therapeutic development.</p>
+          
+          <div class="highlight-stat">
+            <strong>Precision Sorting:</strong> High-resolution separation of monocyte subtypes with maintained functionality
+          </div>
+          
+          <p>CellWave<sup>R</sup> technology enables researchers to sort specific monocyte populations (classical, intermediate, and non-classical) with high purity and viability. The gentle acoustic sorting preserves cell surface markers and functional characteristics essential for downstream analysis.</p>
+          
+          <p>This application is particularly valuable for studying inflammatory diseases, immune system disorders, and developing targeted immunotherapies.</p>
+        </div>
+        <div class="app-visual">
+          <img src="../assets/img/applications/ViabilityPlot.png" alt="Monocyte subtypes separation" class="app-image">
+          <p class="image-caption">Separation of different monocyte subtypes using surface markers</p>
+        </div>
+      </div>
     </section>
-    <section id="monocytes">
-      <h3>Subtypes: Monocytes</h3>
-      <img src="../assets/sample.jpg" alt="Monocytes" style="max-width:100%;max-height:250px;">
-      <p>Application details for Monocytes...</p>
-    </section>
-    <section id="transfected">
-      <h3>Transfected cells</h3>
-      <img src="../assets/sample.jpg" alt="Transfected cells" style="max-width:100%;max-height:250px;">
-      <p>Application details for Transfected cells...</p>
+
+    <!-- Transfected cells section -->
+    <section id="transfected" class="application-section">
+      <div class="app-content">
+        <div class="app-text">
+          <h3>Transfected Cells Sorting</h3>
+          <p>Isolating successfully transfected cells from non-transfected populations is essential for gene therapy research, protein production, and functional studies. Traditional methods often compromise cell viability and transfection efficiency.</p>
+          
+          <div class="highlight-stat">
+            <strong>Gentle Selection:</strong> Preserve transfection efficiency while achieving high purity separation
+          </div>
+          
+          <p>CellWave<sup>R</sup> uses fluorescent markers to identify and gently isolate transfected cells using focused acoustic waves. This approach maintains the delicate balance of transfected cells while ensuring high purity for downstream applications.</p>
+          
+          <p>Applications include isolating cells expressing fluorescent proteins, selecting for specific gene modifications, and enriching populations for functional assays in research and therapeutic development.</p>
+        </div>
+        <div class="app-visual">
+          <img src="../assets/img/applications/TransfectedCells.png" alt="Transfected cells sorting process" class="app-image">
+          <p class="image-caption">Fluorescently labeled transfected cells isolated using acoustic sorting</p>
+        </div>
+      </div>
     </section>
   </main>
+
   <footer class="footer">
     COPYRIGHT CELLWAVE TECHNOLOGIES 2020. ALL RIGHTS RESERVED.
   </footer>
+
+  <script>
+    // 平滑滚动到锚点
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
-</html> 
+</html>

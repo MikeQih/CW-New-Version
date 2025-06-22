@@ -2,35 +2,572 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CellWaveR | About Us</title>
-  <link rel="stylesheet" href="../assets/style.css">
+  <title>CellWaveR | Leadership Team</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body { 
+      font-family: 'Arial', 'Helvetica', sans-serif; 
+      margin: 0; 
+      background: #fff; /* 简化为纯白背景 */
+      color: #111; 
+      min-height: 100vh;
+    }
+
+    header {
+      background: #f8f8f8; /* 简化背景 */
+      padding: 0 20px;
+      box-sizing: border-box;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: 12vh;
+      min-height: 70px;
+      max-height: 120px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 简化阴影 */
+    }
+
+    nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 120px;
+    }
+
+    .logo {
+      height: 80%;
+      max-height: 64px;
+      min-height: 40px;
+      cursor: pointer;
+      /* 移除过度的过渡效果 */
+    }
+
+    main { 
+      padding: 40px 20px; 
+      padding-top: calc(12vh + 60px);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* 页面标题 */
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      color: #111; /* 简化为纯色 */
+    }
+
+    .page-header p {
+      font-size: 1.2em;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* 团队成员网格 */
+    .leaders {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .leader-card {
+      background: #fff; /* 简化背景 */
+      border-radius: 16px; /* 稍微减小圆角 */
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* 简化过渡 */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .leader-card::before {
+      /* 移除复杂的伪元素效果 */
+      display: none;
+    }
+
+    .leader-card:hover {
+      transform: translateY(-5px); /* 减小移动距离 */
+      box-shadow: 0 8px 20px rgba(59, 179, 179, 0.15); /* 简化阴影 */
+    }
+
+    .leader-card.active {
+      transform: scale(1.02); /* 减小缩放 */
+      box-shadow: 0 10px 25px rgba(59, 179, 179, 0.2);
+    }
+
+    .leader-image {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+
+    .leader-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease; /* 减少过渡时间 */
+    }
+
+    .leader-card:hover img {
+      transform: scale(1.05); /* 减小缩放比例 */
+    }
+
+    .leader-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .leader-name {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 1.3em;
+      margin-bottom: 0.5rem;
+      color: #111;
+      line-height: 1.3;
+    }
+
+    .leader-position {
+      color: #3bb3b3;
+      font-weight: 600;
+      font-size: 1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .click-hint {
+      color: #999;
+      font-size: 0.85em;
+      font-style: italic;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .leader-card:hover .click-hint {
+      opacity: 1;
+      color: #3bb3b3;
+    }
+
+    /* 详细信息展示区域 */
+    .leader-details {
+      background: #fff; /* 简化背景 */
+      border-radius: 16px;
+      padding: 0;
+      margin-top: 3rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1); /* 简化阴影 */
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px); /* 减小移动距离 */
+      transition: all 0.3s ease; /* 简化过渡 */
+      max-height: 0;
+    }
+
+    .leader-details.active {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 1000px;
+      padding: 3rem;
+    }
+
+    .details-content {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .details-image {
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .details-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .details-text {
+      flex: 1;
+    }
+
+    .details-text h2 {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: 2.2em;
+      margin-bottom: 0.5rem;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .details-text h3 {
+      color: #3bb3b3;
+      font-size: 1.3em;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .details-text p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .close-details {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: rgba(59, 179, 179, 0.1);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      color: #3bb3b3;
+      transition: all 0.3s ease;
+    }
+
+    .close-details:hover {
+      background: #3bb3b3;
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    /* 导航栏样式 */
+    .nav-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-current {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 8px;
+      background: #f8f8f8; /* 简化背景 */
+      transition: background 0.3s ease; /* 简化过渡 */
+      font-size: clamp(16px, 2.2vw, 24px);
+      line-height: 1.1;
+    }
+
+    .nav-current:hover {
+      background: #f0f0f0; /* 简化悬停效果 */
+    }
+
+    .nav-list {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: #fff; /* 简化背景 */
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1); /* 简化阴影 */
+      border-radius: 8px;
+      min-width: 180px;
+      z-index: 2000;
+      flex-direction: column;
+      padding: 8px 0;
+    }
+
+    .nav-menu:hover .nav-list,
+    .nav-menu:focus-within .nav-list {
+      display: flex;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: 12px 20px;
+      color: #111;
+      text-decoration: none;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      text-align: center;
+      margin: 0 8px;
+    }
+
+    .nav-list a:hover {
+      background: rgba(59, 179, 179, 0.1);
+      color: #3bb3b3;
+      font-weight: bold;
+    }
+
+    .nav-list a.active, .nav-current.active {
+      color: #3bb3b3;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 1em;
+      color: #fff;
+      background: #3a4667; /* 简化背景 */
+      padding: 30px 0;
+      margin-top: 4rem;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 900px) {
+      .leaders {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .details-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .details-image {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 2rem auto;
+      }
+      
+      main {
+        padding: 20px 15px;
+        padding-top: calc(8vh + 40px);
+      }
+      
+      .nav-current {
+        padding: 6px 12px;
+        font-size: clamp(14px, 4vw, 18px);
+      }
+      
+      header {
+        padding: 0 12px;
+        height: 8vh;
+        min-height: 60px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .leaders {
+        grid-template-columns: 1fr;
+      }
+      
+      .leader-details.active {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="../assets/img/home/Logo.png" alt="CellWaveR Logo" class="logo" onclick="window.location.href='../home/index.html'" style="cursor:pointer;">
     <nav>
       <div class="nav-menu">
-        <span class="nav-current active">About Us</span>
+        <span class="nav-current active">Leadership Team</span>
         <div class="nav-list">
           <a href="../home/index.html">Home</a>
           <a href="../technology/index.html">Technology</a>
           <a href="../applications/index.html">Applications</a>
-          <a href="../about/index.html" class="active">About Us</a>
-          <a href="../leadership/index.html">Leadership Team</a>
+          <a href="../about/index.html">About Us</a>
+          <a href="../leadership/index.html" class="active">Leadership Team</a>
           <a href="../contact/index.html">Contact</a>
         </div>
       </div>
     </nav>
   </header>
+
   <main>
-    <section>
-      <h1>About Us</h1>
-      <img src="../assets/sample.jpg" alt="About Us" style="max-width:100%;max-height:250px;">
-      <p>Information about the company, team, and mission...</p>
-    </section>
+    <div class="page-header">
+      <h1>Our Leadership Team</h1>
+      <p>Meet the visionary leaders driving innovation in cell sorting technology</p>
+    </div>
+
+    <div class="leaders">
+      <div class="leader-card" data-leader="robert">
+        <div class="leader-image">
+          <img src="../assets/img/leadership/teamPhoto/Bob.png" alt="Mr. Robert Fu">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Mr. Robert Fu</div>
+          <div class="leader-position">CEO and Co-founder</div>
+          <div class="click-hint">Click to learn more</div>
+        </div>
+      </div>
+
+      <div class="leader-card" data-leader="ye">
+        <div class="leader-image">
+          <img src="../assets/img/leadership/teamPhoto/Ye.png" alt="Assoc. Prof. Ye Ai">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Assoc. Prof. Ye Ai</div>
+          <div class="leader-position">Chief Scientific Adviser and Co-founder</div>
+          <div class="click-hint">Click to learn more</div>
+        </div>
+      </div>
+
+      <div class="leader-card" data-leader="chayakorn">
+        <div class="leader-image">
+          <img src="../assets/img/leadership/teamPhoto/Chayakorn.jpg" alt="Dr Chayakorn Petchakup">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Dr Chayakorn Petchakup</div>
+          <div class="leader-position">Chief Technology Officer</div>
+          <div class="click-hint">Click to learn more</div>
+        </div>
+      </div>
+
+      <div class="leader-card" data-leader="lawrence">
+        <div class="leader-image">
+          <img src="../assets/img/leadership/teamPhoto/lawrence.jpg" alt="Mr. Lawrence Lim">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Mr. Lawrence Lim</div>
+          <div class="leader-position">Engineering Advisor</div>
+          <div class="click-hint">Click to learn more</div>
+        </div>
+      </div>
+
+      <div class="leader-card" data-leader="chris">
+        <div class="leader-image">
+          <img src="../assets/img/leadership/teamPhoto/Chris.jpg" alt="Dr Chrishan Ramachandra">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Dr Chrishan Ramachandra</div>
+          <div class="leader-position">Research Advisor</div>
+          <div class="click-hint">Click to learn more</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 详细信息展示区域 -->
+    <div class="leader-details" id="leaderDetails">
+      <button class="close-details" onclick="closeDetails()">×</button>
+      <div class="details-content" id="detailsContent">
+        <!-- 动态内容将在这里显示 -->
+      </div>
+    </div>
   </main>
+
   <footer class="footer">
     COPYRIGHT CELLWAVE TECHNOLOGIES 2020. ALL RIGHTS RESERVED.
   </footer>
+
+  <script>
+    const leaderData = {
+      robert: {
+        name: "Mr. Robert Fu",
+        position: "CEO and Co-founder",
+        image: "../assets/img/leadership/teamPhoto/Bob.png",
+        description: "Robert brings extensive technical and business development experience to CellWave. He successfully grew a software start-up into a multi-million dollar sales business, demonstrating his ability to scale innovative technologies.",
+        education: "BASc University of Toronto, MSc London School of Economics",
+        expertise: "Business Development, Strategic Planning, Technology Commercialization"
+      },
+      ye: {
+        name: "Assoc. Prof. Ye Ai",
+        position: "Chief Scientific Adviser and Co-founder",
+        image: "../assets/img/leadership/teamPhoto/Ye.png",
+        description: "With more than 15 years of experience in research and development of acoustic microfluidic cell manipulation for single cell research, Prof. Ye Ai is a leading expert in the field. He concurrently serves as Professor at Singapore University of Technology and Design.",
+        education: "Postdoctoral Researcher at Los Alamos National Laboratory",
+        expertise: "Acoustic Microfluidics, Single Cell Research, Bioengineering"
+      },
+      chayakorn: {
+        name: "Dr Chayakorn Petchakup",
+        position: "Chief Technology Officer",
+        image: "../assets/img/leadership/teamPhoto/Chayakorn.jpg",
+        description: "Dr. Petchakup brings more than 10 years of R&D experience in integrated microfluidics, combining label-free separation, biophysical cytometry, and machine learning for immune cell phenotyping in biological samples.",
+        education: "PhD, Nanyang Technological University",
+        expertise: "Microfluidics Integration, Machine Learning, Immune Cell Analysis"
+      },
+      lawrence: {
+        name: "Mr. Lawrence Lim",
+        position: "Engineering Advisor",
+        image: "../assets/img/leadership/teamPhoto/lawrence.jpg",
+        description: "Lawrence brings more than 20 years of experience taking projects from product concept through to manufacturing and marketing in medical devices and biotechnology industry. He is a certified Design for Six Sigma 'Black Belt'.",
+        education: "MSc Nanyang Technological University",
+        expertise: "Product Development, Manufacturing, Quality Systems, Medical Devices"
+      },
+      chris: {
+        name: "Dr Chrishan Ramachandra",
+        position: "Research Advisor",
+        image: "../assets/img/leadership/teamPhoto/Chris.jpg",
+        description: "Dr. Ramachandra's research focus is on modeling human cardiac diseases and discovering new treatment targets for heart failure. He has discovered novel therapies currently undergoing clinical and pre-clinical validation.",
+        education: "PhD National University of Singapore, Associate Professor at Duke-NUS",
+        expertise: "Cardiac Disease Modeling, Regenerative Medicine, Stem Cell Research"
+      }
+    };
+
+    function showLeaderDetails(leaderId) {
+      const leader = leaderData[leaderId];
+      const detailsContent = document.getElementById('detailsContent');
+      const leaderDetails = document.getElementById('leaderDetails');
+      
+      // 清除所有活动状态
+      document.querySelectorAll('.leader-card').forEach(card => {
+        card.classList.remove('active');
+      });
+      
+      // 设置当前卡片为活动状态
+      document.querySelector(`[data-leader="${leaderId}"]`).classList.add('active');
+      
+      detailsContent.innerHTML = `
+        <div class="details-image">
+          <img src="${leader.image}" alt="${leader.name}">
+        </div>
+        <div class="details-text">
+          <h2>${leader.name}</h2>
+          <h3>${leader.position}</h3>
+          <p>${leader.description}</p>
+          <p><strong>Education & Background:</strong> ${leader.education}</p>
+          <p><strong>Key Expertise:</strong> ${leader.expertise}</p>
+        </div>
+      `;
+      
+      leaderDetails.classList.add('active');
+      leaderDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function closeDetails() {
+      const leaderDetails = document.getElementById('leaderDetails');
+      leaderDetails.classList.remove('active');
+      
+      // 清除所有活动状态
+      document.querySelectorAll('.leader-card').forEach(card => {
+        card.classList.remove('active');
+      });
+    }
+
+    // 为每个卡片添加点击事件
+    document.querySelectorAll('.leader-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const leaderId = this.getAttribute('data-leader');
+        showLeaderDetails(leaderId);
+      });
+    });
+
+    // 点击详情区域外部关闭
+    document.addEventListener('click', function(e) {
+      const leaderDetails = document.getElementById('leaderDetails');
+      const isClickInsideDetails = leaderDetails.contains(e.target);
+      const isClickOnCard = e.target.closest('.leader-card');
+      
+      if (!isClickInsideDetails && !isClickOnCard && leaderDetails.classList.contains('active')) {
+        closeDetails();
+      }
+    });
+  </script>
 </body>
-</html> 
+</html>
