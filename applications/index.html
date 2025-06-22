@@ -45,6 +45,8 @@
     .page-header {
       text-align: center;
       margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeInBanner 1.2s ease-in forwards;
     }
 
     .page-header h1 {
@@ -56,51 +58,90 @@
 
     /* 应用导航栏 */
     .app-nav {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: linear-gradient(135deg, #f9f9f9 0%, #f1f1f1 100%);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 0.6s;
+      text-align: center;
     }
 
     .app-nav h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       color: #3bb3b3;
+      font-size: 1.5em;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-main-item {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .nav-main-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(59, 179, 179, 0.15);
+      border-color: #3bb3b3;
+    }
+
+    .nav-main-item h4 {
+      margin: 0 0 1rem 0;
+      color: #111;
       font-size: 1.2em;
+      font-weight: bold;
     }
 
-    .app-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .nav-sub-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
-    .app-nav > ul > li {
-      margin-bottom: 0.8rem;
-    }
-
-    .app-nav ul ul {
-      margin-left: 1.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .app-nav ul ul li {
-      margin-bottom: 0.4rem;
-    }
-
-    .app-nav a {
+    .nav-item-link {
       color: #111;
       text-decoration: none;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
-      transition: all 0.2s;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
       display: inline-block;
+      font-weight: 500;
+      border: 1px solid #e0e0e0;
+      background: #f9f9f9;
     }
 
-    .app-nav a:hover {
+    .nav-item-link:hover {
       background: #3bb3b3;
       color: white;
-      transform: translateX(5px);
+      transform: scale(1.05);
+      border-color: #3bb3b3;
+      box-shadow: 0 2px 8px rgba(59, 179, 179, 0.3);
+    }
+
+    .nav-item-link.primary {
+      background: #3bb3b3;
+      color: white;
+      border-color: #3bb3b3;
+      font-weight: 600;
+    }
+
+    .nav-item-link.primary:hover {
+      background: #2a9999;
+      border-color: #2a9999;
     }
 
     /* 应用部分样式 */
@@ -108,6 +149,28 @@
       margin-bottom: 4rem;
       padding: 2rem 0;
       border-bottom: 2px solid #f0f0f0;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+    }
+
+    .application-section:nth-of-type(2) {
+      animation-delay: 1.0s;
+    }
+
+    .application-section:nth-of-type(3) {
+      animation-delay: 1.4s;
+    }
+
+    .application-section:nth-of-type(4) {
+      animation-delay: 1.8s;
+    }
+
+    .application-section:nth-of-type(5) {
+      animation-delay: 2.2s;
+    }
+
+    .application-section:nth-of-type(6) {
+      animation-delay: 2.6s;
     }
 
     .application-section:last-of-type {
@@ -173,7 +236,7 @@
     }
 
     .app-image:hover {
-      transform: scale(1.02);
+      transform: translateY(-5px);
     }
 
     .image-caption {
@@ -222,6 +285,47 @@
     .data-card .description {
       color: #666;
       font-size: 0.9em;
+    }
+
+    /* 导航箭头 */
+    .nav-arrow {
+      position: fixed;
+      right: 3vw;
+      width: 60px;
+      height: 60px;
+      background: #3bb3b3;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+      cursor: pointer;
+      z-index: 3000;
+      transition: all 0.3s ease;
+      opacity: 0.9;
+    }
+
+    .nav-arrow:hover {
+      background: #2a9999;
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .arrow-down {
+      bottom: 4vh;
+    }
+
+    .arrow-up {
+      bottom: 12vh;
+      display: none;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeInBanner {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: none; }
     }
 
     /* 导航栏样式 */
@@ -296,6 +400,15 @@
 
     /* 响应式设计 */
     @media (max-width: 900px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .nav-main-item {
+        padding: 1.5rem;
+      }
+      
       .app-content {
         flex-direction: column;
         gap: 2rem;
@@ -313,6 +426,20 @@
       
       .data-cards {
         grid-template-columns: 1fr;
+      }
+      
+      .nav-arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .arrow-up {
+        bottom: 10vh;
+      }
+      
+      .arrow-down {
+        bottom: 3vh;
       }
       
       main {
@@ -344,7 +471,6 @@
           <a href="../technology/index.html">Technology</a>
           <a href="../applications/index.html" class="active">Applications</a>
           <a href="../about/index.html">About Us</a>
-          <a href="../leadership/index.html">Leadership Team</a>
           <a href="../contact/index.html">Contact</a>
         </div>
       </div>
@@ -352,30 +478,39 @@
   </header>
 
   <main>
-    <div class="page-header">
+    <div class="page-header" id="page-top">
       <h1>Applications</h1>
     </div>
 
     <!-- 应用导航 -->
-    <div class="app-nav">
+    <div class="app-nav" id="app-nav">
       <h3>Navigate to Applications:</h3>
-      <ul>
-        <li><a href="#deadcell">Dead cell removal: scRNAseq</a></li>
-        <li><a href="#other">Other applications</a>
-          <ul>
-            <li><a href="#cardio">Cardiomyocytes</a></li>
-            <li><a href="#monocytes">Subtypes: Monocytes</a></li>
-            <li><a href="#transfected">Transfected cells</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="nav-container">
+        <!-- 主要应用 -->
+        <div class="nav-main-item">
+          <h4>Featured Application</h4>
+          <div class="nav-sub-items">
+            <a href="#deadcell" class="nav-item-link primary">Dead Cell Removal: scRNAseq</a>
+          </div>
+        </div>
+        
+        <!-- 其他应用 -->
+        <div class="nav-main-item">
+          <h4>Other Applications</h4>
+          <div class="nav-sub-items">
+            <a href="#cardio" class="nav-item-link">Cardiomyocytes</a>
+            <a href="#monocytes" class="nav-item-link">Subtypes: Monocytes</a>
+            <a href="#transfected" class="nav-item-link">Transfected Cells</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Dead cell removal section -->
     <section id="deadcell" class="application-section">
       <div class="app-content">
         <div class="app-text">
-          <h2>Dead Cell Removal: scRNAseq</h2>
+          <h2>Dead Cell Removal for scRNAseq</h2>
           <p>Dead cells present a significant challenge for single cell RNA sequencing (scRNAseq). Existing methods for dead cell removal also remove a significant number of live cells, compromising sample quality and experimental results.</p>
           
           <div class="highlight-stat">
@@ -432,7 +567,7 @@
           <p><em>"If there were a system capable of purifying heart cells and maintaining viability, it would be immensely beneficial for the scientific community."</em> - Asst. Prof. Chrishan Ramachandra, Stem Cell Scientist</p>
         </div>
         <div class="app-visual">
-          <img src="../assets/img/applications/CMPurity.png" alt="Cardiomyocytes purity comparison" class="app-image">
+          <img src="../assets/img/applications/Viability_Plot.png" alt="Cardiomyocytes purity comparison" class="app-image">
           <p class="image-caption">Cardiomyocyte purity before and after CellWave sorting</p>
         </div>
       </div>
@@ -472,7 +607,7 @@
           <p>This application is particularly valuable for studying inflammatory diseases, immune system disorders, and developing targeted immunotherapies.</p>
         </div>
         <div class="app-visual">
-          <img src="../assets/img/applications/ViabilityPlot.png" alt="Monocyte subtypes separation" class="app-image">
+          <img src="../assets/img/applications/CMPurity.png" alt="Monocyte subtypes separation" class="app-image">
           <p class="image-caption">Separation of different monocyte subtypes using surface markers</p>
         </div>
       </div>
@@ -501,23 +636,152 @@
     </section>
   </main>
 
+  <!-- 导航箭头 -->
+  <div class="nav-arrow arrow-down" id="arrowDown" onclick="scrollToNextSection()" title="Next Section">
+    &#8595;
+  </div>
+  
+  <div class="nav-arrow arrow-up" id="arrowUp" onclick="scrollToPreviousSection()" title="Previous Section">
+    &#8593;
+  </div>
+
   <footer class="footer">
     COPYRIGHT CELLWAVE TECHNOLOGIES 2020. ALL RIGHTS RESERVED.
   </footer>
 
   <script>
-    // 平滑滚动到锚点
+    // 平滑滚动到锚点，考虑固定导航栏高度
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+          // 计算导航栏高度
+          const headerHeight = document.querySelector('header').offsetHeight;
+          // 添加额外的偏移量确保标题完全可见
+          const extraOffset = 20;
+          const targetPosition = target.offsetTop - headerHeight - extraOffset;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
           });
         }
       });
+    });
+
+    // 定义页面区块，按顺序排列
+    const sections = ['#app-nav', '#deadcell', '#cardio', '#monocytes', '#transfected'];
+    
+    function getCurrentSectionIndex() {
+      const scrollPosition = window.scrollY;
+      const headerHeight = document.querySelector('header').offsetHeight;
+      
+      // 为每个区块检查当前滚动位置
+      for (let i = 0; i < sections.length; i++) {
+        const section = document.querySelector(sections[i]);
+        if (section) {
+          const sectionTop = section.offsetTop - headerHeight - 50;
+          const nextSection = document.querySelector(sections[i + 1]);
+          let sectionBottom;
+          
+          if (nextSection) {
+            sectionBottom = nextSection.offsetTop - headerHeight - 50;
+          } else {
+            // 最后一个区块，到页面底部
+            sectionBottom = document.body.scrollHeight;
+          }
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            return i;
+          }
+        }
+      }
+      
+      // 默认情况
+      if (scrollPosition < 200) {
+        return 0;
+      }
+      
+      return sections.length - 1;
+    }
+
+    function scrollToNextSection() {
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex < sections.length - 1) {
+        // 如果不是最后一个区块，滚动到下一个区块
+        const nextIndex = currentIndex + 1;
+        scrollToSection(sections[nextIndex]);
+      } else {
+        // 如果在最后一个区块（transfected），滚动到页面底部（footer）
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToPreviousSection() {
+      const scrollPosition = window.scrollY;
+      const pageHeight = document.body.scrollHeight - window.innerHeight;
+      
+      // 如果在页面底部，返回到最后一个区块
+      if (scrollPosition >= pageHeight - 50) {
+        scrollToSection(sections[sections.length - 1]);
+        return;
+      }
+      
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex > 0) {
+        // 滚动到上一个区块
+        scrollToSection(sections[currentIndex - 1]);
+      } else {
+        // 如果在第一个区块，滚动到页面顶部
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToSection(sectionId) {
+      const target = document.querySelector(sectionId);
+      if (target) {
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const extraOffset = 20;
+        const targetPosition = target.offsetTop - headerHeight - extraOffset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // 监听滚动事件，切换箭头显示
+    window.addEventListener('scroll', function() {
+      const arrowDown = document.getElementById('arrowDown');
+      const arrowUp = document.getElementById('arrowUp');
+      const scrollPosition = window.scrollY;
+      const pageHeight = document.body.scrollHeight - window.innerHeight;
+      
+      // 在顶部 (前200px)
+      if (scrollPosition < 200) {
+        arrowDown.style.display = 'flex';
+        arrowUp.style.display = 'none';
+      }
+      // 在底部 (最后50px)
+      else if (scrollPosition >= pageHeight - 50) {
+        arrowDown.style.display = 'none';
+        arrowUp.style.display = 'flex';
+      }
+      // 在中间部分
+      else {
+        arrowDown.style.display = 'flex';
+        arrowUp.style.display = 'flex';
+      }
     });
   </script>
 </body>

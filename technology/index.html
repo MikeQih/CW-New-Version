@@ -69,11 +69,31 @@
       font-family: 'Arial Black', Arial, sans-serif;
       text-align: left;
       color: #111;
+      opacity: 0;
+      animation: fadeInBanner 1.2s ease-in forwards;
     }
 
     .technology-text p {
       margin-bottom: 1.2em;
       text-align: left;
+    }
+
+    .technology-text p:nth-of-type(1) {
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 0.6s;
+    }
+
+    .technology-text p:nth-of-type(2) {
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 1.0s;
+    }
+
+    .technology-text p:nth-of-type(3) {
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 1.4s;
     }
 
     .technology-media {
@@ -91,6 +111,9 @@
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 1.8s;
     }
 
     .technology-img:hover {
@@ -103,6 +126,9 @@
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       overflow: hidden;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 2.2s;
     }
 
     .technology-video video {
@@ -110,6 +136,12 @@
       height: auto;
       display: block;
       border-radius: 12px;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeInBanner {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: none; }
     }
 
     /* 导航栏样式 */

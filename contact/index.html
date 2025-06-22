@@ -62,6 +62,8 @@
     .page-header {
       text-align: center;
       margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeInBanner 1.2s ease-in forwards;
     }
 
     .page-header h1 {
@@ -84,6 +86,9 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 3rem;
       margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 0.8s;
     }
 
     .contact-section {
@@ -147,24 +152,28 @@
 
     /* LinkedIn 部分 */
     .linkedin-section {
-      background: linear-gradient(135deg, #0077b5, #005885);
-      color: white;
+      background: #f9f9f9; /* 改为灰白色背景 */
+      color: #111; /* 改为黑色文字 */
       border-radius: 16px;
       padding: 2.5rem;
       text-align: center;
       margin: 3rem 0;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 1.4s;
     }
 
     .linkedin-section h2 {
       font-family: 'Arial Black', Arial, sans-serif;
       font-size: 1.8em;
       margin-bottom: 1rem;
+      color: #111; /* 黑色标题 */
     }
 
     .linkedin-section p {
       font-size: 1.1em;
       margin-bottom: 2rem;
-      opacity: 0.9;
+      color: #666; /* 灰色副文本 */
     }
 
     .linkedin-button {
@@ -173,17 +182,19 @@
       gap: 0.8rem;
       padding: 1rem 2rem;
       background: white;
-      color: #0077b5;
+      color: #0077b5; /* 保持LinkedIn蓝色 */
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
       font-size: 1.1em;
       transition: all 0.3s ease;
+      border: 2px solid #e0e0e0;
     }
 
     .linkedin-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 20px rgba(0,119,181,0.15); /* LinkedIn蓝色阴影 */
+      border-color: #0077b5;
     }
 
     .linkedin-icon {
@@ -204,6 +215,9 @@
       border-radius: 16px;
       padding: 3rem;
       margin-top: 3rem;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 2.0s;
     }
 
     .contact-form-section h2 {
@@ -277,6 +291,47 @@
       background: #2a9999;
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
+    }
+
+    /* 导航箭头 */
+    .nav-arrow {
+      position: fixed;
+      right: 3vw;
+      width: 60px;
+      height: 60px;
+      background: #3bb3b3;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+      cursor: pointer;
+      z-index: 3000;
+      transition: all 0.3s ease;
+      opacity: 0.9;
+    }
+
+    .nav-arrow:hover {
+      background: #2a9999;
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .arrow-down {
+      bottom: 4vh;
+    }
+
+    .arrow-up {
+      bottom: 12vh;
+      display: none;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeInBanner {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: none; }
     }
 
     /* 导航栏样式 */
@@ -366,6 +421,20 @@
         padding: 2rem 1.5rem;
       }
       
+      .nav-arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .arrow-up {
+        bottom: 10vh;
+      }
+      
+      .arrow-down {
+        bottom: 3vh;
+      }
+      
       main {
         padding: 20px 15px;
         padding-top: calc(8vh + 40px);
@@ -408,7 +477,6 @@
           <a href="../technology/index.html">Technology</a>
           <a href="../applications/index.html">Applications</a>
           <a href="../about/index.html">About Us</a>
-          <a href="../leadership/index.html">Leadership Team</a>
           <a href="../contact/index.html" class="active">Contact</a>
         </div>
       </div>
@@ -421,7 +489,7 @@
       <p>Get in touch with CellWave Technologies to learn more about our innovative cell sorting solutions</p>
     </div>
 
-    <div class="contact-grid">
+    <div class="contact-grid" id="contact-info">
       <!-- Email Contact Section -->
       <div class="contact-section">
         <div class="contact-icon">✉</div>
@@ -435,13 +503,13 @@
       <div class="contact-section">
         <div class="contact-icon">📋</div>
         <h2>Product Brochure</h2>
-        <p>Interested in learning more about our CellWave<sup>R</sup> technology? Request our detailed product brochure with technical specifications and application examples.</p>
+        <p>Interested in learning more about our CellWave™ technology? Request our detailed product brochure with technical specifications and application examples.</p>
         <a href="mailto:robertfu@cellwavetech.com?subject=Product Brochure Request" class="email-link">Request Brochure</a>
       </div>
     </div>
 
     <!-- LinkedIn Section -->
-    <div class="linkedin-section">
+    <div class="linkedin-section" id="linkedin">
       <h2>Connect with Us on LinkedIn</h2>
       <p>Follow CellWave Technologies on LinkedIn for the latest updates, research breakthroughs, and industry insights.</p>
       <a href="https://sg.linkedin.com/company/cellwave-technologies" target="_blank" rel="noopener noreferrer" class="linkedin-button">
@@ -451,9 +519,10 @@
     </div>
 
     <!-- Contact Form Section -->
-    <div class="contact-form-section">
+    <div class="contact-form-section" id="contact-form">
       <h2>Send Us a Message</h2>
-      <form id="contactForm">
+      <form id="contactForm" name="contact" method="POST" netlify>
+        <input type="hidden" name="form-name" value="contact" />
         <div class="form-grid">
           <div class="form-group">
             <label for="firstName">First Name *</label>
@@ -496,42 +565,143 @@
     </div>
   </main>
 
+  <!-- 导航箭头 -->
+  <div class="nav-arrow arrow-down" id="arrowDown" onclick="scrollToNextSection()" title="Next Section">
+    &#8595;
+  </div>
+  
+  <div class="nav-arrow arrow-up" id="arrowUp" onclick="scrollToPreviousSection()" title="Previous Section">
+    &#8593;
+  </div>
+
   <footer class="footer">
     COPYRIGHT CELLWAVE TECHNOLOGIES 2020. ALL RIGHTS RESERVED.
   </footer>
 
   <script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+      // 如果你想使用Netlify Forms，注释掉 e.preventDefault()
+      // e.preventDefault();
       
-      // Get form data
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData);
+      // Netlify Forms会自动处理表单提交
+      // 表单提交后，Netlify会发送邮件通知到你指定的邮箱
       
-      // Create email content
-      const subject = `Contact Form Submission - ${data.inquiry || 'General Inquiry'}`;
-      const body = `
-Name: ${data.firstName} ${data.lastName}
-Email: ${data.email}
-Organization: ${data.organization || 'Not specified'}
-Position: ${data.position || 'Not specified'}
-Inquiry Type: ${data.inquiry || 'Not specified'}
+      // 显示提交成功消息
+      alert('Thank you for your message! We will get back to you soon.');
+    });
 
-Message:
-${data.message}
-      `.trim();
+    // 定义页面区块，按顺序排列
+    const sections = ['#contact-info', '#linkedin', '#contact-form'];
+    
+    function getCurrentSectionIndex() {
+      const scrollPosition = window.scrollY;
+      const headerHeight = document.querySelector('header').offsetHeight;
       
-      // Create mailto link
-      const mailtoLink = `mailto:robertfu@cellwavetech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      // 为每个区块检查当前滚动位置
+      for (let i = 0; i < sections.length; i++) {
+        const section = document.querySelector(sections[i]);
+        if (section) {
+          const sectionTop = section.offsetTop - headerHeight - 50;
+          const nextSection = document.querySelector(sections[i + 1]);
+          let sectionBottom;
+          
+          if (nextSection) {
+            sectionBottom = nextSection.offsetTop - headerHeight - 50;
+          } else {
+            // 最后一个区块，到页面底部
+            sectionBottom = document.body.scrollHeight;
+          }
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            return i;
+          }
+        }
+      }
       
-      // Open email client
-      window.location.href = mailtoLink;
+      // 默认情况
+      if (scrollPosition < 200) {
+        return 0;
+      }
       
-      // Show confirmation
-      alert('Thank you for your message! Your email client should now open with the pre-filled message.');
+      return sections.length - 1;
+    }
+
+    function scrollToNextSection() {
+      const currentIndex = getCurrentSectionIndex();
       
-      // Reset form
-      this.reset();
+      if (currentIndex < sections.length - 1) {
+        // 如果不是最后一个区块，滚动到下一个区块
+        const nextIndex = currentIndex + 1;
+        scrollToSection(sections[nextIndex]);
+      } else {
+        // 如果在最后一个区块（表单），滚动到页面底部（footer）
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToPreviousSection() {
+      const scrollPosition = window.scrollY;
+      const pageHeight = document.body.scrollHeight - window.innerHeight;
+      
+      // 如果在页面底部，返回到最后一个区块
+      if (scrollPosition >= pageHeight - 50) {
+        scrollToSection(sections[sections.length - 1]);
+        return;
+      }
+      
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex > 0) {
+        // 滚动到上一个区块
+        scrollToSection(sections[currentIndex - 1]);
+      } else {
+        // 如果在第一个区块，滚动到页面顶部
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToSection(sectionSelector) {
+      const target = document.querySelector(sectionSelector);
+      if (target) {
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const extraOffset = 20;
+        const targetPosition = target.offsetTop - headerHeight - extraOffset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // 监听滚动事件，切换箭头显示
+    window.addEventListener('scroll', function() {
+      const arrowDown = document.getElementById('arrowDown');
+      const arrowUp = document.getElementById('arrowUp');
+      const scrollPosition = window.scrollY;
+      const pageHeight = document.body.scrollHeight - window.innerHeight;
+      
+      // 在顶部 (前200px)
+      if (scrollPosition < 200) {
+        arrowDown.style.display = 'flex';
+        arrowUp.style.display = 'none';
+      }
+      // 在底部 (最后50px) - 像Applications页面一样
+      else if (scrollPosition >= pageHeight - 50) {
+        arrowDown.style.display = 'none';
+        arrowUp.style.display = 'flex';
+      }
+      // 在中间部分
+      else {
+        arrowDown.style.display = 'flex';
+        arrowUp.style.display = 'flex';
+      }
     });
   </script>
 </body>
