@@ -440,6 +440,8 @@
         </div>
       </div>
 
+      <!-- LAWRENCE 已注释掉 -->
+      <!--
       <div class="leader-card" data-leader="lawrence">
         <div class="leader-image">
           <img src="../assets/img/leadership/teamPhoto/lawrence.jpg" alt="Mr. Lawrence Lim">
@@ -450,7 +452,10 @@
           <div class="click-hint">Click to learn more</div>
         </div>
       </div>
+      -->
 
+      <!-- DR CHRISHAN 已注释掉 -->
+      <!--
       <div class="leader-card" data-leader="chris">
         <div class="leader-image">
           <img src="../assets/img/leadership/teamPhoto/Chris.jpg" alt="Dr Chrishan Ramachandra">
@@ -461,6 +466,7 @@
           <div class="click-hint">Click to learn more</div>
         </div>
       </div>
+      -->
     </div>
 
     <!-- 详细信息展示区域 -->
@@ -501,7 +507,10 @@
         description: "Dr. Petchakup brings more than 10 years of R&D experience in integrated microfluidics, combining label-free separation, biophysical cytometry, and machine learning for immune cell phenotyping in biological samples.",
         education: "PhD, Nanyang Technological University",
         expertise: "Microfluidics Integration, Machine Learning, Immune Cell Analysis"
-      },
+      }
+      
+      /* LAWRENCE 数据已注释掉 */
+      /*
       lawrence: {
         name: "Mr. Lawrence Lim",
         position: "Engineering Advisor",
@@ -510,6 +519,10 @@
         education: "MSc Nanyang Technological University",
         expertise: "Product Development, Manufacturing, Quality Systems, Medical Devices"
       },
+      */
+      
+      /* DR CHRISHAN 数据已注释掉 */
+      /*
       chris: {
         name: "Dr Chrishan Ramachandra",
         position: "Research Advisor",
@@ -518,6 +531,7 @@
         education: "PhD National University of Singapore, Associate Professor at Duke-NUS",
         expertise: "Cardiac Disease Modeling, Regenerative Medicine, Stem Cell Research"
       }
+      */
     };
 
     function showLeaderDetails(leaderId) {
@@ -547,7 +561,11 @@
       `;
       
       leaderDetails.classList.add('active');
-      leaderDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // 等待动画完成后再滚动，确保滚动位置准确
+      setTimeout(() => {
+        leaderDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 350); // 稍微超过CSS transition时间(300ms)
     }
 
     function closeDetails() {
@@ -558,6 +576,12 @@
       document.querySelectorAll('.leader-card').forEach(card => {
         card.classList.remove('active');
       });
+      
+      // 等待关闭动画完成后，滚动到页面标题位置
+      setTimeout(() => {
+        const pageHeader = document.querySelector('.page-header');
+        pageHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 350); // 等待关闭动画完成
     }
 
     // 为每个卡片添加点击事件
