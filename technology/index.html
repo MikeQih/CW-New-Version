@@ -35,13 +35,18 @@
       cursor: pointer;
     }
 
-    main { 
-      padding: 40px; 
-      padding-top: calc(12vh + 40px); /* 确保内容在导航栏下方 */
+    /* 第一部分 - CellWave在行动 */
+    .hero-section {
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 14vh 2vw 4vh 2vw;
+      box-sizing: border-box;
+      position: relative;
     }
 
-    /* Technology section 样式 */
     .technology-section {
       display: flex;
       flex-direction: row;
@@ -50,7 +55,7 @@
       gap: 4vw;
       max-width: 1200px;
       margin: 0 auto;
-      min-height: 80vh;
+      width: 100%;
     }
 
     .technology-text {
@@ -138,10 +143,148 @@
       border-radius: 12px;
     }
 
+    /* 第二部分 - 用户友好区块 */
+    .user-friendly-section {
+      min-height: 100vh;
+      padding: 8vh 2vw;
+      position: relative;
+      /* background: #fafafa; */
+    }
+
+    .user-friendly-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .user-friendly-title {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 2em;
+      font-family: 'Arial Black', Arial, sans-serif;
+      color: #111;
+    }
+
+    .user-friendly-description {
+      background: #f8f9fa;
+      border-left: 4px solid #3bb3b3;
+      padding: 2rem 2.5rem;
+      border-radius: 8px;
+      margin-bottom: 4rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .user-friendly-description p {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #444;
+      font-style: italic;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .products-container {
+      display: flex;
+      flex-direction: row;
+      gap: 4rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-card {
+      flex: 1;
+      max-width: 500px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 2rem;
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #e67e22;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .product-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .product-features li {
+      padding: 0.5rem 0;
+      font-size: 1rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+    }
+
+    .product-features li::before {
+      content: "✓";
+      color: #27ae60;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    /* 导航箭头 */
+    .nav-arrow {
+      position: fixed;
+      right: 3vw;
+      width: 60px;
+      height: 60px;
+      background: #3bb3b3;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+      cursor: pointer;
+      z-index: 3000;
+      transition: all 0.3s ease;
+      opacity: 0.9;
+    }
+
+    .nav-arrow:hover {
+      background: #2a9999;
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .arrow-down {
+      bottom: 4vh;
+    }
+
+    .arrow-up {
+      bottom: 4vh;
+      display: none;
+    }
+
     /* 动画效果 */
     @keyframes fadeInBanner {
       from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: none; }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* 导航栏样式 */
@@ -211,11 +354,14 @@
       color: #fff;
       background: #3a4667;
       padding: 20px 0;
-      margin-top: 4rem;
     }
 
     /* 响应式设计 */
     @media (max-width: 900px) {
+      .hero-section {
+        padding: 10vh 2vw 4vh 2vw;
+      }
+      
       .technology-section {
         flex-direction: column;
         gap: 3vh;
@@ -236,12 +382,24 @@
       }
       
       .technology-media {
-        order: -1; /* 移动端图片和视频显示在文字上方 */
+        order: -1;
       }
       
-      main {
-        padding: 20px;
-        padding-top: calc(8vh + 20px);
+      .products-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .user-friendly-title {
+        font-size: 2em;
+      }
+      
+      .user-friendly-description {
+        padding: 1.5rem 2rem;
+      }
+      
+      .user-friendly-description p {
+        font-size: 1.1rem;
       }
       
       .nav-current {
@@ -269,17 +427,37 @@
       .technology-text h1 {
         font-size: 1.8em;
       }
+      
+      .user-friendly-title {
+        font-size: 1.5em;
+      }
+      
+      .product-card {
+        max-width: 90vw;
+      }
+    }
+
+    /* 滚动动画 */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .scroll-animate.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="../assets/img/home/Logo.png" alt="CellWaveR Logo" class="logo" onclick="window.location.href='/index.html'" style="cursor:pointer;">
+    <img src="../assets/img/home/Logo.png" alt="CellWaveR Logo" class="logo" onclick="window.location.href='../home/index.html'" style="cursor:pointer;">
     <nav>
       <div class="nav-menu">
         <span class="nav-current active">Technology</span>
         <div class="nav-list">
-          <a href="/index.html">Home</a>
+          <a href="../home/index.html">Home</a>
           <a href="../technology/index.html" class="active">Technology</a>
           <a href="../applications/index.html">Applications</a>
           <a href="../about/index.html">About Us</a>
@@ -289,14 +467,14 @@
     </nav>
   </header>
 
-  <main>
-    <section class="technology-section">
+  <!-- 第一部分 - CellWave在行动 -->
+  <section class="hero-section" id="hero">
+    <div class="technology-section">
       <div class="technology-text">
         <h1>CELLWAVE<sup>R</sup> IN ACTION</h1>
         <p>In this demonstration, MCF-7 cells are separated from whole blood using CellWave<sup>R</sup>.</p>
         <p>MCF-7 cells were fluorescently labelled and mixed with whole blood prior to sorting. Detection of the fluorescence signal triggers a sub-ms pulse of the highly focused acoustic wave to gently push the detected cell across the channel.</p>
         <p>Sorted MCF-7 cells flow to the top branch of the channel and the remaining whole blood flows to the lower branch.</p>
-        <!-- <p>The technology demonstrates our commitment to providing researchers with tools that preserve cell integrity during the sorting process, making it ideal for sensitive applications in stem cell research, cancer research, and drug discovery.</p> -->
       </div>
       
       <div class="technology-media">
@@ -309,11 +487,111 @@
           </video>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- 第二部分 - 用户友好 -->
+  <section class="user-friendly-section" id="user-friendly">
+    <div class="user-friendly-content">
+      <h2 class="user-friendly-title scroll-animate">User Friendly Technology</h2>
+      
+      <div class="user-friendly-description scroll-animate">
+        <p>Our CellWave technology is designed with researchers in mind, offering an intuitive and accessible approach to cell sorting that doesn't compromise on precision or reliability.</p>
+      </div>
+      
+      <div class="products-container">
+        <div class="product-card scroll-animate">
+          <img src="../assets/img/technology/BenchtopCellSorter.png" alt="Benchtop Cell Sorter" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Benchtop cell sorter</h3>
+            <ul class="product-features">
+              <li>Compact (H385mm x W380mm x D419mm)</li>
+              <li>Easy to use</li>
+              <li>No external fluidic setup</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="product-card scroll-animate">
+          <img src="../assets/img/technology/CellWaveSorter.png" alt="CellWave Microfluidic Cartridge" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">CellWave sorter powered by a patented microfluidic cartridge</h3>
+            <ul class="product-features">
+              <li>Disposable</li>
+              <li>No sample contamination</li>
+              <li>Built-in reservoirs for sample and buffer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 导航箭头 -->
+  <div class="nav-arrow arrow-down" id="arrowDown" onclick="scrollToUserFriendly()" title="Learn More">
+    &#8595;
+  </div>
+  
+  <div class="nav-arrow arrow-up" id="arrowUp" onclick="scrollToHero()" title="Back to Top">
+    &#8593;
+  </div>
 
   <footer class="footer">
     COPYRIGHT CELLWAVE TECHNOLOGIES 2020. ALL RIGHTS RESERVED.
   </footer>
+
+  <script>
+    function scrollToUserFriendly() {
+      document.getElementById('user-friendly').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollToHero() {
+      document.getElementById('hero').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    // 监听滚动事件，切换箭头显示和触发动画
+    window.addEventListener('scroll', function() {
+      const heroSection = document.getElementById('hero');
+      const arrowDown = document.getElementById('arrowDown');
+      const arrowUp = document.getElementById('arrowUp');
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      
+      if (window.scrollY > heroBottom - window.innerHeight / 2) {
+        arrowDown.style.display = 'none';
+        arrowUp.style.display = 'flex';
+      } else {
+        arrowDown.style.display = 'flex';
+        arrowUp.style.display = 'none';
+      }
+
+      // 滚动动画
+      const animateElements = document.querySelectorAll('.scroll-animate');
+      animateElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('show');
+        }
+      });
+    });
+
+    // 页面加载时检查可见元素
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateElements = document.querySelectorAll('.scroll-animate');
+      animateElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('show');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

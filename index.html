@@ -37,53 +37,43 @@
 
     /* 全屏首页部分 */
     .hero-section {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      padding: 12vh 2vw 0 2vw; /* 添加顶部padding避免被导航栏遮挡 */
+      padding: 14vh 2vw 4vh 2vw;
       box-sizing: border-box;
       position: relative;
     }
 
     .home-banner {
-      width: 105vw;
-      max-width: 1400px;
+      width: 95vw;
+      max-width: 1200px;
       min-width: 320px;
       border-radius: 18px;
       box-shadow: 0 4px 32px rgba(0,0,0,0.15);
       opacity: 0;
       animation: fadeInBanner 1.2s ease-in forwards;
-      margin-bottom: 8vh;
+      margin-bottom: 4vh;
     }
 
-    .hero-title {
-      font-family: 'Arial Black', Arial, sans-serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      text-align: center;
-      margin: 2vh 0;
-      opacity: 0;
-      animation: fadeInBanner 0.8s ease-in forwards;
-      animation-delay: 0.7s;
-    }
-
-    .hero-subtitle {
-      font-family: 'Arial Black', Arial, sans-serif;
-      font-size: clamp(1.2rem, 2.5vw, 2rem);
-      text-align: center;
-      margin: 1vh 0 3vh 0;
-      opacity: 0;
-      animation: fadeInBanner 0.8s ease-in forwards;
-      animation-delay: 1.1s;
+    .hero-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.5vh;
+      max-width: 900px;
+      width: 100%;
     }
 
     .video-link-container {
       border: 1px solid #eaeaea;
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 2.5rem;
       background: white;
-      max-width: 700px;
+      width: 100%;
+      max-width: 750px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.10);
       opacity: 0;
       animation: fadeInBanner 0.8s ease-in forwards;
@@ -119,14 +109,37 @@
     }
 
     .video-info h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.35rem;
+      margin-bottom: 0.7rem;
       color: #3bb3b3;
     }
 
     .video-info p {
       color: #666;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .hero-description {
+      background: #f8f9fa;
+      border-left: 4px solid #3bb3b3;
+      padding: 2rem 2.5rem;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 750px;
+      opacity: 0;
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 1.9s;
+      transform: translateY(20px);
+    }
+
+    .hero-description p {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: #444;
+      font-style: italic;
+      font-weight: 400;
     }
 
     /* 内容部分 */
@@ -213,8 +226,14 @@
 
     /* 动画 */
     @keyframes fadeInBanner {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: none; }
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
     }
 
     /* 导航栏样式 */
@@ -289,7 +308,28 @@
     /* 响应式设计 */
     @media (max-width: 768px) {
       .hero-section {
-        padding-top: 8vh;  /* 移动端减少顶部padding */
+        padding: 10vh 2vw 4vh 2vw;
+      }
+      
+      .home-banner {
+        width: 92vw;
+        margin-bottom: 3vh;
+      }
+      
+      .hero-content-wrapper {
+        gap: 4vh;
+      }
+      
+      .video-link-container {
+        padding: 2rem;
+      }
+      
+      .hero-description {
+        padding: 1.8rem 2rem;
+      }
+      
+      .hero-description p {
+        font-size: 1.15rem;
       }
       
       .approach-section {
@@ -329,6 +369,32 @@
         min-height: 60px;
       }
     }
+
+    @media (max-width: 480px) {
+      .home-banner {
+        width: 90vw;
+      }
+      
+      .hero-content-wrapper {
+        max-width: 100%;
+      }
+      
+      .video-link-container,
+      .hero-description {
+        max-width: 100%;
+      }
+    }
+
+    /* 大屏幕优化 */
+    @media (min-width: 1400px) {
+      .hero-section {
+        padding: 16vh 2vw 6vh 2vw;
+      }
+      
+      .home-banner {
+        max-width: 1400px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -351,18 +417,23 @@
   <!-- 全屏首页部分 -->
   <section class="hero-section" id="hero">
     <img src="../assets/img/home/HomeBanner.png" alt="Home Banner" class="home-banner">
-    <!-- <h1 class="hero-title">Single Cell Sorting Anywhere, Anytime</h1> -->
-    <!-- <h2 class="hero-subtitle">Demo video Acoustic Microfluidic Gentle Cell Sorting</h2> -->
-    <div class="video-link-container">
-      <a href="https://www.youtube.com/watch?v=-iXQ-OE37Yg" target="_blank" rel="noopener noreferrer" class="video-link">
-        <div class="video-thumbnail">
-          <img src="https://img.youtube.com/vi/-iXQ-OE37Yg/hqdefault.jpg" alt="Demo Video Thumbnail">
-        </div>
-        <div class="video-info">
-          <h3>Acoustic Microfluidic Gentle Cell Sorting</h3>
-          <p>Watch our demo video to learn about CellWave<sup>R</sup> 's gentle and efficient single cell sorting technology.</p>
-        </div>
-      </a>
+    
+    <div class="hero-content-wrapper">
+      <div class="video-link-container">
+        <a href="https://www.youtube.com/watch?v=-iXQ-OE37Yg" target="_blank" rel="noopener noreferrer" class="video-link">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/-iXQ-OE37Yg/hqdefault.jpg" alt="Demo Video Thumbnail">
+          </div>
+          <div class="video-info">
+            <h3>Acoustic Microfluidic Gentle Cell Sorting</h3>
+            <p>Watch our demo video to learn about CellWave<sup>R</sup>'s gentle and efficient single cell sorting technology.</p>
+          </div>
+        </a>
+      </div>
+      
+      <div class="hero-description">
+        <p>Cell sorting is an essential step in biological research, enabling the isolation of specific cell populations for downstream applications such as gene editing, immunology, and single-cell analysis.</p>
+      </div>
     </div>
   </section>
 
