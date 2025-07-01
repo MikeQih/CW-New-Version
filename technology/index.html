@@ -20,6 +20,14 @@
       min-height: 70px;
       max-height: 120px;
     }
+
+    /* 动画效果 */
+    @keyframes fadeInBanner {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 导航栏样式 */
     nav {
       position: relative;
       display: flex;
@@ -146,107 +154,164 @@
     /* 第二部分 - 用户友好区块 */
     .user-friendly-section {
       min-height: 100vh;
-      padding: 8vh 2vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 14vh 2vw 4vh 2vw;
+      box-sizing: border-box;
       position: relative;
-      /* background: #fafafa; */
+      background: #fafafa;
     }
 
     .user-friendly-content {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 4vw;
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
     }
 
-    .user-friendly-title {
-      text-align: center;
+    .user-friendly-text {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.15em;
+      line-height: 1.7;
+      padding-right: 2rem;
+    }
+
+    .user-friendly-text h2 {
       font-size: 2.5em;
-      margin-bottom: 2em;
+      margin-bottom: 1.2em;
       font-family: 'Arial Black', Arial, sans-serif;
+      text-align: left;
       color: #111;
     }
 
-    .user-friendly-description {
-      background: #f8f9fa;
-      border-left: 4px solid #3bb3b3;
-      padding: 2rem 2.5rem;
-      border-radius: 8px;
-      margin-bottom: 4rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+    .user-friendly-text p {
+      margin-bottom: 1.2em;
+      text-align: left;
     }
 
-    .user-friendly-description p {
-      margin: 0;
-      font-size: 1.25rem;
-      line-height: 1.7;
-      color: #444;
-      font-style: italic;
-      font-weight: 400;
-      text-align: center;
-    }
-
-    .products-container {
+    .user-friendly-media {
+      flex: 1;
       display: flex;
-      flex-direction: row;
-      gap: 4rem;
+      flex-direction: column;
+      gap: 2rem;
       align-items: center;
       justify-content: center;
     }
 
-    .product-card {
-      flex: 1;
+    .product-item {
+      width: 100%;
       max-width: 500px;
       background: white;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       overflow: hidden;
       transition: transform 0.3s ease;
     }
 
-    .product-card:hover {
-      transform: translateY(-5px);
+    .product-item:hover {
+      transform: scale(1.02);
     }
 
     .product-image {
       width: 100%;
-      height: 300px;
-      object-fit: cover;
+      height: auto;
+      display: block;
     }
 
-    .product-info {
-      padding: 2rem;
-    }
-
-    .product-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #e67e22;
-      margin-bottom: 1rem;
+    .product-description {
+      padding: 1.5rem;
       text-align: center;
     }
 
-    .product-features {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e67e22;
+      margin-bottom: 0.8rem;
     }
 
-    .product-features li {
-      padding: 0.5rem 0;
-      font-size: 1rem;
+    .product-features {
+      font-size: 0.95rem;
       color: #666;
+      line-height: 1.4;
+    }
+
+    /* 第三部分 - 示例工作流程 */
+    .workflow-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 14vh 2vw 4vh 2vw;
+      box-sizing: border-box;
+      position: relative;
+      background: #fff;
+    }
+
+    .workflow-content {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 4vw;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .workflow-text {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.15em;
+      line-height: 1.7;
+      padding-right: 2rem;
+    }
+
+    .workflow-text h2 {
+      font-size: 2.5em;
+      margin-bottom: 1.2em;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-align: left;
+      color: #111;
+    }
+
+    .workflow-text p {
+      margin-bottom: 1.2em;
+      text-align: left;
+    }
+
+    .workflow-media {
+      flex: 1;
       display: flex;
       align-items: center;
+      justify-content: center;
     }
 
-    .product-features li::before {
-      content: "✓";
-      color: #27ae60;
-      font-weight: bold;
-      margin-right: 0.5rem;
+    .workflow-img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
     }
 
-    /* 导航箭头 */
+    .workflow-img:hover {
+      transform: scale(1.02);
+    }
+
+    /* 导航箭头样式 */
     .nav-arrow {
       position: fixed;
       right: 3vw;
@@ -277,14 +342,8 @@
     }
 
     .arrow-up {
-      bottom: 4vh;
+      bottom: 12vh;
       display: none;
-    }
-
-    /* 动画效果 */
-    @keyframes fadeInBanner {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     /* 导航栏样式 */
@@ -385,21 +444,55 @@
         order: -1;
       }
       
-      .products-container {
+      .user-friendly-content {
         flex-direction: column;
-        gap: 2rem;
+        gap: 3vh;
+        text-align: center;
       }
       
-      .user-friendly-title {
+      .user-friendly-text {
+        padding-right: 0;
+      }
+      
+      .user-friendly-text h2 {
         font-size: 2em;
+        text-align: center;
       }
       
-      .user-friendly-description {
-        padding: 1.5rem 2rem;
+      .user-friendly-text p {
+        text-align: center;
       }
       
-      .user-friendly-description p {
-        font-size: 1.1rem;
+      .user-friendly-media {
+        order: -1;
+      }
+      
+      .product-item {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .workflow-content {
+        flex-direction: column;
+        gap: 3vh;
+        text-align: center;
+      }
+      
+      .workflow-text {
+        padding-right: 0;
+      }
+      
+      .workflow-text h2 {
+        font-size: 2em;
+        text-align: center;
+      }
+      
+      .workflow-text p {
+        text-align: center;
+      }
+      
+      .workflow-media {
+        order: -1;
       }
       
       .nav-current {
@@ -428,11 +521,11 @@
         font-size: 1.8em;
       }
       
-      .user-friendly-title {
+      .user-friendly-text h2 {
         font-size: 1.5em;
       }
       
-      .product-card {
+      .product-item {
         max-width: 90vw;
       }
     }
@@ -493,46 +586,55 @@
   <!-- 第二部分 - 用户友好 -->
   <section class="user-friendly-section" id="user-friendly">
     <div class="user-friendly-content">
-      <h2 class="user-friendly-title scroll-animate">User Friendly Technology</h2>
-      
-      <div class="user-friendly-description scroll-animate">
+      <div class="user-friendly-text">
+        <h2>User Friendly Technology</h2>
         <p>Our CellWave technology is designed with researchers in mind, offering an intuitive and accessible approach to cell sorting that doesn't compromise on precision or reliability.</p>
+        <p>The system features a compact benchtop design that requires no external fluidic setup, making it perfect for any laboratory environment. Our patented microfluidic cartridge ensures disposable, contamination-free operation.</p>
+        <p>With built-in sample and buffer reservoirs, researchers can focus on their science rather than complex setup procedures, while maintaining the highest standards of sorting precision and cell viability.</p>
       </div>
       
-      <div class="products-container">
-        <div class="product-card scroll-animate">
+      <div class="user-friendly-media">
+        <div class="product-item scroll-animate">
           <img src="../assets/img/technology/BenchtopCellSorter.png" alt="Benchtop Cell Sorter" class="product-image">
-          <div class="product-info">
-            <h3 class="product-title">Benchtop cell sorter</h3>
-            <ul class="product-features">
-              <li>Compact (H385mm x W380mm x D419mm)</li>
-              <li>Easy to use</li>
-              <li>No external fluidic setup</li>
-            </ul>
+          <div class="product-description">
+            <div class="product-title">Benchtop cell sorter</div>
+            <div class="product-features">Compact (H385mm x W380mm x D419mm) • Easy to use • No external fluidic setup</div>
           </div>
         </div>
         
-        <div class="product-card scroll-animate">
+        <div class="product-item scroll-animate">
           <img src="../assets/img/technology/CellWaveSorter.png" alt="CellWave Microfluidic Cartridge" class="product-image">
-          <div class="product-info">
-            <h3 class="product-title">CellWave sorter powered by a patented microfluidic cartridge</h3>
-            <ul class="product-features">
-              <li>Disposable</li>
-              <li>No sample contamination</li>
-              <li>Built-in reservoirs for sample and buffer</li>
-            </ul>
+          <div class="product-description">
+            <div class="product-title">CellWave sorter powered by a patented microfluidic cartridge</div>
+            <div class="product-features">Disposable • No sample contamination • Built-in reservoirs for sample and buffer</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 第三部分 - 示例工作流程 -->
+  <section class="workflow-section" id="workflow">
+    <div class="workflow-content">
+      <div class="workflow-text">
+        <h2>Example Workflow</h2>
+        <p>CellWave technology seamlessly integrates into your existing laboratory workflow, providing a complete solution from sample preparation to high-quality single-cell analysis.</p>
+        <p>Starting with low-quality samples that typically have less than 70% viability, our dead cell removal process using CellWave sorter significantly improves sample quality to over 70% viability.</p>
+        <p>The enhanced samples are then perfectly suited for downstream applications like high-throughput single-cell sequencing, ensuring more reliable and accurate results for your research.</p>
+      </div>
+      
+      <div class="workflow-media">
+        <img src="../assets/img/technology/ExampleWorkFlow.png" alt="Example Workflow" class="workflow-img">
+      </div>
+    </div>
+  </section>
+
   <!-- 导航箭头 -->
-  <div class="nav-arrow arrow-down" id="arrowDown" onclick="scrollToUserFriendly()" title="Learn More">
+  <div class="nav-arrow arrow-down" id="arrowDown" onclick="scrollToNextSection()" title="Next Section">
     &#8595;
   </div>
   
-  <div class="nav-arrow arrow-up" id="arrowUp" onclick="scrollToHero()" title="Back to Top">
+  <div class="nav-arrow arrow-up" id="arrowUp" onclick="scrollToPreviousSection()" title="Previous Section">
     &#8593;
   </div>
 
@@ -541,34 +643,119 @@
   </footer>
 
   <script>
-    function scrollToUserFriendly() {
-      document.getElementById('user-friendly').scrollIntoView({
-        behavior: 'smooth'
-      });
+    // 定义页面区块，按顺序排列
+    const sections = ['#hero', '#user-friendly', '#workflow'];
+    
+    function getCurrentSectionIndex() {
+      const scrollPosition = window.scrollY;
+      const headerHeight = document.querySelector('header').offsetHeight;
+      
+      // 为每个区块检查当前滚动位置
+      for (let i = 0; i < sections.length; i++) {
+        const section = document.querySelector(sections[i]);
+        if (section) {
+          const sectionTop = section.offsetTop - headerHeight - 50;
+          const nextSection = document.querySelector(sections[i + 1]);
+          let sectionBottom;
+          
+          if (nextSection) {
+            sectionBottom = nextSection.offsetTop - headerHeight - 50;
+          } else {
+            // 最后一个区块，到页面底部
+            sectionBottom = document.body.scrollHeight;
+          }
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            return i;
+          }
+        }
+      }
+      
+      // 默认情况
+      if (scrollPosition < 200) {
+        return 0;
+      }
+      
+      return sections.length - 1;
     }
 
-    function scrollToHero() {
-      document.getElementById('hero').scrollIntoView({
-        behavior: 'smooth'
-      });
+    function scrollToNextSection() {
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex < sections.length - 1) {
+        // 如果不是最后一个区块，滚动到下一个区块
+        const nextIndex = currentIndex + 1;
+        scrollToSection(sections[nextIndex]);
+      } else {
+        // 如果在最后一个区块，滚动到页面底部（footer）
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToPreviousSection() {
+      const scrollPosition = window.scrollY;
+      const pageHeight = document.body.scrollHeight - window.innerHeight;
+      
+      // 如果在页面底部，返回到最后一个区块
+      if (scrollPosition >= pageHeight - 50) {
+        scrollToSection(sections[sections.length - 1]);
+        return;
+      }
+      
+      const currentIndex = getCurrentSectionIndex();
+      
+      if (currentIndex > 0) {
+        // 滚动到上一个区块
+        scrollToSection(sections[currentIndex - 1]);
+      } else {
+        // 如果在第一个区块，滚动到页面顶部
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToSection(sectionId) {
+      const target = document.querySelector(sectionId);
+      if (target) {
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const extraOffset = 20;
+        const targetPosition = target.offsetTop - headerHeight - extraOffset;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
 
     // 监听滚动事件，切换箭头显示和触发动画
     window.addEventListener('scroll', function() {
-      const heroSection = document.getElementById('hero');
       const arrowDown = document.getElementById('arrowDown');
       const arrowUp = document.getElementById('arrowUp');
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      const scrollPosition = window.scrollY;
+      const pageHeight = document.body.scrollHeight - window.innerHeight;
       
-      if (window.scrollY > heroBottom - window.innerHeight / 2) {
+      // 简化的箭头显示逻辑：基于滚动位置而不是区块索引
+      if (scrollPosition <= 100) {
+        // 页面顶部：只显示向下
+        arrowDown.style.display = 'flex';
+        arrowUp.style.display = 'none';
+      } else if (scrollPosition >= pageHeight - 100) {
+        // 页面底部：只显示向上
         arrowDown.style.display = 'none';
         arrowUp.style.display = 'flex';
       } else {
+        // 中间位置：显示双箭头
         arrowDown.style.display = 'flex';
-        arrowUp.style.display = 'none';
+        arrowUp.style.display = 'flex';
       }
-
-      // 滚动动画
+      
+      // 滚动动画处理
       const animateElements = document.querySelectorAll('.scroll-animate');
       animateElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -580,8 +767,16 @@
       });
     });
 
-    // 页面加载时检查可见元素
+    // 页面加载时初始化箭头显示
     document.addEventListener('DOMContentLoaded', function() {
+      const arrowDown = document.getElementById('arrowDown');
+      const arrowUp = document.getElementById('arrowUp');
+      
+      // 初始化箭头显示
+      arrowDown.style.display = 'flex';
+      arrowUp.style.display = 'none';
+      
+      // 检查可见元素的动画
       const animateElements = document.querySelectorAll('.scroll-animate');
       animateElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
