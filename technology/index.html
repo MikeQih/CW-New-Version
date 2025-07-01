@@ -16,7 +16,7 @@
       width: 100%;
       z-index: 1000;
       background: #f8f8f8;
-      height: 12vh;
+      height: 80px;
       min-height: 70px;
       max-height: 120px;
     }
@@ -37,91 +37,105 @@
     }
     nav a { margin-left: 4px; color: #111; text-decoration: underline; font-size: 0.95em; }
     .logo {
-      height: 80%;
+      height: 60px;
       max-height: 64px;
       min-height: 40px;
       cursor: pointer;
     }
 
-    /* 第一部分 - CellWave在行动 */
-    .hero-section {
+    /* 通用区块样式 */
+    .section {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 14vh 2vw 4vh 2vw;
+      padding: 120px 5vw 70px 5vw;
       box-sizing: border-box;
       position: relative;
     }
 
-    .technology-section {
+    .section-content {
       display: flex;
       flex-direction: row;
-      align-items: stretch;
+      align-items: center;
       justify-content: center;
-      gap: 4vw;
-      max-width: 1200px;
+      gap: 6vw;
+      max-width: 1400px;
       margin: 0 auto;
       width: 100%;
+      min-height: 70vh;
     }
 
-    .technology-text {
-      flex: 1.2;
+    .section-text {
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       font-size: 1.15em;
-      line-height: 1.7;
+      line-height: 1.8;
       padding-right: 2rem;
+      max-width: 600px;
     }
 
-    .technology-text h1 {
+    .section-text h1,
+    .section-text h2 {
       font-size: 2.5em;
-      margin-bottom: 1.2em;
+      margin-bottom: 1.4em;
       font-family: 'Arial Black', Arial, sans-serif;
       text-align: left;
       color: #111;
+      line-height: 1.2;
+    }
+
+    .section-text h1 {
       opacity: 0;
       animation: fadeInBanner 1.2s ease-in forwards;
     }
 
-    .technology-text p {
-      margin-bottom: 1.2em;
+    .section-text p {
+      margin-bottom: 1.5em;
       text-align: left;
+      color: #333;
     }
 
-    .technology-text p:nth-of-type(1) {
+    .section-text p:nth-of-type(1) {
       opacity: 0;
       animation: fadeInBanner 0.8s ease-in forwards;
       animation-delay: 0.6s;
     }
 
-    .technology-text p:nth-of-type(2) {
+    .section-text p:nth-of-type(2) {
       opacity: 0;
       animation: fadeInBanner 0.8s ease-in forwards;
       animation-delay: 1.0s;
     }
 
-    .technology-text p:nth-of-type(3) {
+    .section-text p:nth-of-type(3) {
       opacity: 0;
       animation: fadeInBanner 0.8s ease-in forwards;
       animation-delay: 1.4s;
     }
 
-    .technology-media {
+    .section-media {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 2rem;
       align-items: center;
       justify-content: center;
+      max-width: 600px;
+    }
+
+    /* 第一部分特殊样式 */
+    .hero-section {
+      background: #fff;
     }
 
     .technology-img {
       width: 100%;
-      max-width: 350px;
-      max-height: 280px;
+      max-width: 400px;
+      height: auto;
       object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -153,61 +167,23 @@
       border-radius: 12px;
     }
 
-    /* 第二部分 - 用户友好区块 */
+    /* 第二部分样式 */
     .user-friendly-section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 14vh 2vw 4vh 2vw;
-      box-sizing: border-box;
-      position: relative;
       background: #fafafa;
     }
 
-    .user-friendly-content {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-      gap: 4vw;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .user-friendly-text {
-      flex: 1.2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.15em;
-      line-height: 1.7;
-      padding-right: 2rem;
-    }
-
-    .user-friendly-text h2 {
-      font-size: 2.5em;
-      margin-bottom: 1.2em;
-      font-family: 'Arial Black', Arial, sans-serif;
-      text-align: left;
-      color: #111;
-    }
-
-    .user-friendly-text p {
-      margin-bottom: 1.2em;
-      text-align: left;
-    }
-
     .user-friendly-media {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 2rem;
       align-items: center;
       justify-content: center;
-      height: 100%;
+      width: 100%;
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInBanner 0.8s ease-in forwards;
+      animation-delay: 1.8s;
     }
 
     .product-item {
@@ -218,9 +194,9 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       overflow: hidden;
       transition: transform 0.3s ease;
-      flex: 1;
       display: flex;
       flex-direction: column;
+      min-height: 280px;
     }
 
     .product-item:hover {
@@ -229,90 +205,46 @@
 
     .product-image {
       width: 100%;
-      height: 45%;
-      object-fit: cover;
+      height: 180px;
+      object-fit: contain;
       display: block;
+      padding: 20px;
+      background: #fff;
     }
 
     .product-description {
-      padding: 1rem 1.5rem;
+      padding: 1.5rem;
       text-align: center;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    .product-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #e67e22;
-      margin-bottom: 0.6rem;
-    }
-
-    .product-features {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.3;
-    }
-
-    /* 第三部分 - 示例工作流程 */
-    .workflow-section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 14vh 2vw 4vh 2vw;
-      box-sizing: border-box;
-      position: relative;
       background: #fff;
     }
 
-    .workflow-content {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-      gap: 4vw;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e67e22;
+      margin-bottom: 1rem;
+      line-height: 1.3;
     }
 
-    .workflow-text {
-      flex: 1.2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.15em;
-      line-height: 1.7;
-      padding-right: 2rem;
+    .product-features {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.4;
     }
 
-    .workflow-text h2 {
-      font-size: 2.5em;
-      margin-bottom: 1.2em;
-      font-family: 'Arial Black', Arial, sans-serif;
-      text-align: left;
-      color: #111;
-    }
-
-    .workflow-text p {
-      margin-bottom: 1.2em;
-      text-align: left;
-    }
-
-    .workflow-media {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* 第三部分样式 */
+    .workflow-section {
+      background: #fff;
     }
 
     .workflow-img {
       width: 100%;
-      max-width: 500px;
+      max-width: 600px;
+      height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
@@ -423,96 +355,78 @@
       font-size: 1em;
       color: #fff;
       background: #3a4667;
-      padding: 20px 0;
+      padding: 40px 0;
     }
 
     /* 响应式设计 */
+    @media (max-width: 1024px) {
+      .section {
+        padding: 100px 3vw 60px 3vw;
+      }
+      
+      .section-content {
+        gap: 4vw;
+        min-height: 60vh;
+      }
+      
+      .section-text {
+        padding-right: 1rem;
+      }
+      
+      .section-text h1,
+      .section-text h2 {
+        font-size: 2.2em;
+      }
+    }
+
     @media (max-width: 900px) {
-      .hero-section {
-        padding: 10vh 2vw 4vh 2vw;
+      .section {
+        padding: 100px 4vw 60px 4vw;
+        min-height: auto;
       }
       
-      .technology-section {
+      .section-content {
         flex-direction: column;
-        gap: 3vh;
+        gap: 4vh;
         text-align: center;
+        min-height: auto;
       }
       
-      .technology-text {
+      .section-text {
         padding-right: 0;
+        max-width: none;
+        order: 2;
       }
       
-      .technology-text h1 {
+      .section-text h1,
+      .section-text h2 {
         font-size: 2em;
         text-align: center;
+        margin-bottom: 1em;
       }
       
-      .technology-text p {
+      .section-text p {
         text-align: center;
+        margin-bottom: 1.2em;
       }
       
-      .technology-media {
-        order: -1;
-      }
-      
-      .user-friendly-content {
-        flex-direction: column;
-        gap: 3vh;
-        text-align: center;
-      }
-      
-      .user-friendly-text {
-        padding-right: 0;
-      }
-      
-      .user-friendly-text h2 {
-        font-size: 2em;
-        text-align: center;
-      }
-      
-      .user-friendly-text p {
-        text-align: center;
-      }
-      
-      .user-friendly-media {
-        order: -1;
-      }
-      
-      .product-item {
-        max-width: 400px;
-        margin: 0 auto;
-        height: auto;
-      }
-      
-      .product-image {
-        height: 200px;
+      .section-media {
+        order: 1;
+        max-width: none;
       }
       
       .user-friendly-media {
         gap: 1.5rem;
       }
       
-      .workflow-content {
-        flex-direction: column;
-        gap: 3vh;
-        text-align: center;
+      .product-item {
+        max-width: 450px;
+        margin: 0 auto;
+        min-height: 250px;
       }
       
-      .workflow-text {
-        padding-right: 0;
-      }
-      
-      .workflow-text h2 {
-        font-size: 2em;
-        text-align: center;
-      }
-      
-      .workflow-text p {
-        text-align: center;
-      }
-      
-      .workflow-media {
-        order: -1;
+      .product-image {
+        height: 150px;
       }
       
       .nav-current {
@@ -522,36 +436,50 @@
       
       header {
         padding: 0 12px;
-        height: 8vh;
+        height: 70px;
         min-height: 60px;
+      }
+      
+      .logo {
+        height: 50px;
       }
     }
 
     @media (max-width: 600px) {
+      .section {
+        padding: 90px 5vw 40px 5vw;
+      }
+      
       .technology-img,
-      .technology-video {
+      .technology-video,
+      .workflow-img {
         max-width: 90vw;
       }
       
-      .technology-text {
+      .section-text {
         font-size: 1em;
       }
       
-      .technology-text h1 {
+      .section-text h1,
+      .section-text h2 {
         font-size: 1.8em;
-      }
-      
-      .user-friendly-text h2 {
-        font-size: 1.5em;
       }
       
       .product-item {
         max-width: 90vw;
-        height: auto;
+        min-height: 220px;
       }
       
       .product-image {
-        height: 150px;
+        height: 120px;
+      }
+      
+      .product-title {
+        font-size: 1.1rem;
+      }
+      
+      .product-features {
+        font-size: 0.9rem;
       }
     }
 
@@ -570,12 +498,12 @@
 </head>
 <body>
   <header>
-    <img src="../assets/img/home/Logo.png" alt="CellWaveR Logo" class="logo" onclick="window.location.href='../home/index.html'" style="cursor:pointer;">
+    <img src="../assets/img/home/Logo.png" alt="CellWaveR Logo" class="logo" onclick="window.location.href='/index.html'" style="cursor:pointer;">
     <nav>
       <div class="nav-menu">
         <span class="nav-current active">Technology</span>
         <div class="nav-list">
-          <a href="../home/index.html">Home</a>
+          <a href="./index.html">Home</a>
           <a href="../technology/index.html" class="active">Technology</a>
           <a href="../applications/index.html">Applications</a>
           <a href="../about/index.html">About Us</a>
@@ -586,22 +514,22 @@
   </header>
 
   <!-- 第一部分 - CellWave在行动 -->
-  <section class="hero-section" id="hero">
-    <div class="technology-section">
-      <div class="technology-text">
+  <section class="section hero-section" id="hero">
+    <div class="section-content">
+      <div class="section-text">
         <h1>CELLWAVE<sup>R</sup> IN ACTION</h1>
         <p>In this demonstration, MCF-7 cells are separated from whole blood using CellWave<sup>R</sup>.</p>
         <p>MCF-7 cells were fluorescently labelled and mixed with whole blood prior to sorting. Detection of the fluorescence signal triggers a sub-ms pulse of the highly focused acoustic wave to gently push the detected cell across the channel.</p>
         <p>Sorted MCF-7 cells flow to the top branch of the channel and the remaining whole blood flows to the lower branch.</p>
       </div>
       
-      <div class="technology-media">
+      <div class="section-media">
         <img src="../assets/img/technology/SortingImg.png" alt="Cell Sorting Technology" class="technology-img">
         
         <div class="technology-video">
           <video controls autoplay muted loop preload="auto" poster="../assets/img/home/SortingImg.png">
             <source src="../assets/video/technology/SortingVideo.mp4" type="video/mp4">
-            Your browser does not support the video tag. Please upgrade your browser to view this content.
+            Your browser does not support the video tag. Please upgrade your browser to use this content.
           </video>
         </div>
       </div>
@@ -609,17 +537,17 @@
   </section>
 
   <!-- 第二部分 - 用户友好 -->
-  <section class="user-friendly-section" id="user-friendly">
-    <div class="user-friendly-content">
-      <div class="user-friendly-text">
+  <section class="section user-friendly-section" id="user-friendly">
+    <div class="section-content">
+      <div class="section-text">
         <h2>User Friendly Technology</h2>
         <p>Our CellWave technology is designed with researchers in mind, offering an intuitive and accessible approach to cell sorting that doesn't compromise on precision or reliability.</p>
         <p>The system features a compact benchtop design that requires no external fluidic setup, making it perfect for any laboratory environment. Our patented microfluidic cartridge ensures disposable, contamination-free operation.</p>
         <p>With built-in sample and buffer reservoirs, researchers can focus on their science rather than complex setup procedures, while maintaining the highest standards of sorting precision and cell viability.</p>
       </div>
       
-      <div class="user-friendly-media">
-        <div class="product-item scroll-animate">
+      <div class="section-media user-friendly-media">
+        <div class="product-item">
           <img src="../assets/img/technology/BenchtopCellSorter.png" alt="Benchtop Cell Sorter" class="product-image">
           <div class="product-description">
             <div class="product-title">Benchtop cell sorter</div>
@@ -627,7 +555,7 @@
           </div>
         </div>
         
-        <div class="product-item scroll-animate">
+        <div class="product-item">
           <img src="../assets/img/technology/CellWaveSorter.png" alt="CellWave Microfluidic Cartridge" class="product-image">
           <div class="product-description">
             <div class="product-title">CellWave sorter powered by a patented microfluidic cartridge</div>
@@ -639,16 +567,16 @@
   </section>
 
   <!-- 第三部分 - 示例工作流程 -->
-  <section class="workflow-section" id="workflow">
-    <div class="workflow-content">
-      <div class="workflow-text">
+  <section class="section workflow-section" id="workflow">
+    <div class="section-content">
+      <div class="section-text">
         <h2>Example Workflow</h2>
         <p>CellWave technology seamlessly integrates into your existing laboratory workflow, providing a complete solution from sample preparation to high-quality single-cell analysis.</p>
         <p>Starting with low-quality samples that typically have less than 70% viability, our dead cell removal process using CellWave sorter significantly improves sample quality to over 70% viability.</p>
         <p>The enhanced samples are then perfectly suited for downstream applications like high-throughput single-cell sequencing, ensuring more reliable and accurate results for your research.</p>
       </div>
       
-      <div class="workflow-media">
+      <div class="section-media">
         <img src="../assets/img/technology/ExampleWorkFlow.png" alt="Example Workflow" class="workflow-img">
       </div>
     </div>
@@ -748,11 +676,11 @@
       const target = document.querySelector(sectionId);
       if (target) {
         const headerHeight = document.querySelector('header').offsetHeight;
-        const extraOffset = 50; // 增加偏移量确保完整显示
+        const extraOffset = 20; // 减少偏移量
         const targetPosition = target.offsetTop - headerHeight - extraOffset;
         
         window.scrollTo({
-          top: Math.max(0, targetPosition), // 确保不会滚动到负值
+          top: Math.max(0, targetPosition),
           behavior: 'smooth'
         });
       }
