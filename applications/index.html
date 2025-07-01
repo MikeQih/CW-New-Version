@@ -494,7 +494,7 @@
         <div class="nav-main-item">
           <h4>Featured Application</h4>
           <div class="nav-sub-items">
-            <a href="#deadcell" class="nav-item-link primary">Dead Cell Removal: scRNAseq</a>
+            <a href="#deadcell" class="nav-item-link primary">Sorted cell viability using CellWave sorting</a>
           </div>
         </div>
         
@@ -505,6 +505,7 @@
             <a href="#cardio" class="nav-item-link">Cardiomyocytes</a>
             <a href="#monocytes" class="nav-item-link">Subtypes: Monocytes</a>
             <a href="#transfected" class="nav-item-link">Transfected Cells</a>
+            <a href="#transfected-example" class="nav-item-link">Application Example</a>
           </div>
         </div>
       </div>
@@ -514,20 +515,46 @@
     <section id="deadcell" class="application-section">
       <div class="app-content">
         <div class="app-text">
-          <h2>Dead Cell Removal for scRNAseq</h2>
+          <h2>Sorted cell viability using CellWave sorting</h2>
           <p>Dead cells present a significant challenge for single cell RNA sequencing (scRNAseq). Existing methods for dead cell removal also remove a significant number of live cells, compromising sample quality and experimental results.</p>
           
           <div class="highlight-stat">
             <strong>Key Achievement:</strong> Over 94% of dead cells removed while preserving live cell population
           </div>
           
-          <p>Dead cells can be removed using CellWave<sup>R</sup> by labelling the dead cells with a dead cell staining kit. Live cells flow through the sorting chip unperturbed, whilst the dead cells are actively removed.</p>
+          <p>Dead cells can be removed using CellWave<sup>®</sup> by labelling the dead cells with a dead cell staining kit. Live cells flow through the sorting chip unperturbed, whilst the dead cells are actively removed.</p>
           
           <p>This gentle approach ensures that your valuable sample maintains its integrity for downstream scRNAseq analysis, providing more accurate and reliable sequencing results.</p>
         </div>
         <div class="app-visual">
-          <img src="../assets/img/applications/DeadCellRemoval.png" alt="Dead cell removal process" class="app-image">
+          <img src="../assets/img/applications/Viability_Plot.png" alt="Dead cell removal process" class="app-image">
           <p class="image-caption">Before and after dead cell removal showing live cell enrichment</p>
+        </div>
+      </div>
+
+      <!-- New section for scRNA-seq results -->
+      <div class="app-content">
+        <div class="app-text">
+          <!-- <h3>Superior scRNA-seq Quality with CellWave Sorting</h3> -->          
+          <div class="highlight-stat">
+            <strong>Key Finding:</strong> CellWave sorted samples from 47% viability PBMCs achieved comparable cell population distributions to 90% viability controls
+          </div>
+          
+          <!-- <p><strong>Analyses performed on MACs Quant Analyser:</strong></p>
+          <ul>
+            <li>Preserved cellular diversity with maintained population ratios across all major cell types</li>
+            <li>Comparable global structures in t-SNE visualization between sorted and control samples</li>
+            <li>Sufficient cell numbers recovered for robust 10X scRNA-seq workflow analysis</li>
+          </ul> -->
+
+          <p>Single-cell RNA sequencing analysis demonstrates that CellWave sorting maintains sample integrity while effectively removing dead cells. Even when starting with low viability samples (47% viable PBMCs), CellWave-sorted cells produce comparable results to high-quality control samples (90% viability).</p>
+
+          
+          <p>This demonstrates that CellWave's gentle sorting technology not only removes dead cells but preserves the biological complexity essential for meaningful single-cell analysis.</p>
+        </div>
+        <div class="app-visual">
+          <img src="../assets/img/applications/Achievement.png" alt="scRNA-seq comparison results" class="app-image">
+          <p class="image-caption">t-SNE plots comparing CellWave sorted PBMCs (47% initial viability) with high viability controls (90%), showing preserved cellular populations and distributions</p>
         </div>
       </div>
       
