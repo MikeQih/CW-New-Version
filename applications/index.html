@@ -173,6 +173,10 @@
       animation-delay: 2.6s;
     }
 
+    .application-section:nth-of-type(7) {
+      animation-delay: 3.0s;
+    }
+
     .application-section:last-of-type {
       border-bottom: none;
     }
@@ -635,7 +639,27 @@
       </div>
     </section>
 
-    
+    <!-- GFP Application Example section -->
+    <section id="transfected-example" class="application-section" style="min-height: 60vh; padding-bottom: 4rem;">
+      <div class="app-content">
+        <div class="app-text">
+          <h3>Application Example: GFP-expressing Cell Enrichment</h3>
+          <p>In gene-editing and cell transfection research, achieving 100% delivery efficiency is often challenging. CellWave<sup>R</sup> technology enables researchers to enrich GFP-expressing cells from mixed populations and culture them for further expansion.</p>
+          
+          <div class="highlight-stat">
+            <strong>Enhanced Efficiency:</strong> Successful enrichment and expansion of transfected cell populations
+          </div>
+          
+          <p>This application demonstrates how acoustic sorting can enhance transfection outcomes by selecting successfully modified cells while preserving their viability and functionality for downstream applications.</p>
+          
+          <p>The gentle acoustic sorting approach ensures that transfected cells maintain their modifications while removing non-transfected cells, resulting in highly pure populations for research and therapeutic applications. This method is particularly valuable for applications requiring high-purity cell populations for further analysis or therapeutic use.</p>
+        </div>
+        <div class="app-visual">
+          <img src="../assets/img/applications/Application 2.png" alt="GFP-expressing MCF-7 cell enrichment" class="app-image">
+          <p class="image-caption">Enrichment of GFP-expressing MCF-7 cells showing improved fluorescence after CellWave sorting and culture</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- 导航箭头 -->
@@ -673,39 +697,26 @@
     });
 
     // 定义页面区块，按顺序排列
-    const sections = ['#app-nav', '#deadcell', '#cardio', '#monocytes', '#transfected'];
-    
+    const sections = ['#app-nav', '#deadcell', '#cardio', '#monocytes', '#transfected', '#transfected-example'];
+        
     function getCurrentSectionIndex() {
-      const scrollPosition = window.scrollY;
+      const scrollPosition = window.scrollY + window.innerHeight / 2; // 使用屏幕中心点检测
       const headerHeight = document.querySelector('header').offsetHeight;
       
-      // 为每个区块检查当前滚动位置
-      for (let i = 0; i < sections.length; i++) {
+      // 从后往前检查，确保更精确的匹配
+      for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.querySelector(sections[i]);
         if (section) {
-          const sectionTop = section.offsetTop - headerHeight - 50;
-          const nextSection = document.querySelector(sections[i + 1]);
-          let sectionBottom;
+          const sectionTop = section.offsetTop - headerHeight;
           
-          if (nextSection) {
-            sectionBottom = nextSection.offsetTop - headerHeight - 50;
-          } else {
-            // 最后一个区块，到页面底部
-            sectionBottom = document.body.scrollHeight;
-          }
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          if (scrollPosition >= sectionTop) {
             return i;
           }
         }
       }
       
-      // 默认情况
-      if (scrollPosition < 200) {
-        return 0;
-      }
-      
-      return sections.length - 1;
+      // 默认返回第一个section
+      return 0;
     }
 
     function scrollToNextSection() {
@@ -716,7 +727,7 @@
         const nextIndex = currentIndex + 1;
         scrollToSection(sections[nextIndex]);
       } else {
-        // 如果在最后一个区块（transfected），滚动到页面底部（footer）
+        // 如果在最后一个区块（transfected-example），滚动到页面底部（footer）
         window.scrollTo({
           top: document.body.scrollHeight,
           behavior: 'smooth'
