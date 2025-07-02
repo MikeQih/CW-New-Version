@@ -35,12 +35,86 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 简化阴影 */
     }
 
+    /* 新的导航栏样式 */
     nav {
-      position: relative;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      min-width: 120px;
+      gap: 0;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links > li {
+      position: relative;
+    }
+    
+    .nav-links a {
+      display: block;
+      padding: 10px 18px;
+      color: #111;
+      text-decoration: none;
+      font-size: 1.05em;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .nav-links a:hover {
+      background: #e6f7ff;
+      color: #3bb3b3;
+    }
+    
+    .nav-links a.active {
+      background: #3bb3b3;
+      color: #fff;
+      font-weight: bold;
+    }
+    
+    /* 悬浮子菜单样式 */
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 2000;
+      padding: 8px 0;
+    }
+    
+    .nav-links > li:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .nav-dropdown a {
+      display: block;
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95em;
+      font-weight: 400;
+      border-radius: 0;
+      transition: all 0.2s ease;
+    }
+    
+    .nav-dropdown a:hover {
+      background: #f0f8ff;
+      color: #3bb3b3;
+      padding-left: 24px;
     }
 
     .logo {
@@ -265,69 +339,6 @@
       to { opacity: 1; transform: none; }
     }
 
-    /* 导航栏样式 */
-    .nav-menu {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-current {
-      cursor: pointer;
-      font-weight: bold;
-      padding: 8px 18px;
-      border-radius: 8px;
-      background: #f8f8f8; /* 简化背景 */
-      transition: background 0.3s ease; /* 简化过渡 */
-      font-size: clamp(16px, 2.2vw, 24px);
-      line-height: 1.1;
-    }
-
-    .nav-current:hover {
-      background: #f0f0f0; /* 简化悬停效果 */
-    }
-
-    .nav-list {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background: #fff; /* 简化背景 */
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1); /* 简化阴影 */
-      border-radius: 8px;
-      min-width: 180px;
-      z-index: 2000;
-      flex-direction: column;
-      padding: 8px 0;
-    }
-
-    .nav-menu:hover .nav-list,
-    .nav-menu:focus-within .nav-list {
-      display: flex;
-    }
-
-    .nav-list a {
-      display: block;
-      padding: 12px 20px;
-      color: #111;
-      text-decoration: none;
-      font-size: 1.05em;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      text-align: center;
-      margin: 0 8px;
-    }
-
-    .nav-list a:hover {
-      background: rgba(59, 179, 179, 0.1);
-      color: #3bb3b3;
-      font-weight: bold;
-    }
-
-    .nav-list a.active, .nav-current.active {
-      color: #3bb3b3;
-      font-weight: bold;
-    }
-
     .footer {
       text-align: center;
       font-size: 1em;
@@ -339,6 +350,24 @@
 
     /* 响应式设计 */
     @media (max-width: 900px) {
+      .nav-links {
+        gap: 4px;
+      }
+      
+      .nav-links a {
+        padding: 8px 12px;
+        font-size: 0.95em;
+      }
+      
+      .nav-dropdown {
+        min-width: 180px;
+      }
+      
+      .nav-dropdown a {
+        font-size: 0.9em;
+        padding: 10px 16px;
+      }
+      
       .leaders {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
@@ -360,11 +389,6 @@
         padding-top: calc(8vh + 40px);
       }
       
-      .nav-current {
-        padding: 6px 12px;
-        font-size: clamp(14px, 4vw, 18px);
-      }
-      
       header {
         padding: 0 12px;
         height: 8vh;
@@ -372,7 +396,29 @@
       }
     }
 
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 2px;
+      }
+      
+      .nav-links a {
+        padding: 6px 8px;
+        font-size: 0.9em;
+      }
+    }
+
     @media (max-width: 600px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 2px;
+      }
+      
+      .nav-links a {
+        padding: 5px 6px;
+        font-size: 0.8em;
+      }
+      
       .leaders {
         grid-template-columns: 1fr;
       }
@@ -381,22 +427,59 @@
         padding: 2rem 1.5rem;
       }
     }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        height: auto;
+        min-height: 80px;
+        padding: 8px 12px;
+        gap: 8px;
+      }
+      
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+      }
+      
+      main {
+        padding-top: 12vh;
+      }
+    }
+
+    /* 大屏幕优化 */
+    @media (min-width: 1400px) {
+      .nav-links a {
+        padding: 12px 24px;
+        font-size: 1.1em;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="../assets/img/home/Logo.png" alt="CellWaveR Logo" class="logo" onclick="window.location.href='/index.html'" style="cursor:pointer;">
     <nav>
-      <div class="nav-menu">
-        <span class="nav-current active">About Us</span>
-        <div class="nav-list">
-          <a href="/index.html">Home</a>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li>
           <a href="../technology/index.html">Technology</a>
+          <div class="nav-dropdown">
+            <a href="../technology/index.html#hero">CELLWAVER IN ACTION</a>
+            <a href="../technology/index.html#user-friendly">User Friendly Technology</a>
+            <a href="../technology/index.html#workflow">Example Workflow</a>
+          </div>
+        </li>
+        <li>
           <a href="../applications/index.html">Applications</a>
-          <a href="../leadership/index.html" class="active">About Us</a>
-          <a href="../contact/index.html">Contact</a>
-        </div>
-      </div>
+          <div class="nav-dropdown">
+            <a href="../applications/index.html#page-top">Featured Application</a>
+            <a href="../applications/index.html#other">Other Applications</a>
+          </div>
+        </li>
+        <li><a href="../about/index.html" class="active">About Us</a></li>
+        <li><a href="../contact/index.html">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
