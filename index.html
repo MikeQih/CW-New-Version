@@ -142,57 +142,58 @@
       width: 100%;
     }
 
-    .video-link-container {
+    /* YouTube 视频容器样式 */
+    .video-container {
       border: 1px solid #eaeaea;
       border-radius: 12px;
       padding: 2.5rem;
       background: white;
       width: 100%;
-      max-width: 750px;
+      max-width: 1200px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.10);
       opacity: 0;
       animation: fadeInBanner 0.8s ease-in forwards;
       animation-delay: 1.5s;
     }
 
-    .video-link {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.3s;
+    .video-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
-    .video-link:hover {
-      transform: translateY(-2px);
-    }
-
-    .video-thumbnail {
-      width: 220px;
-      height: 124px;
-      background: #f5f5f5;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .video-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .video-info h3 {
+    .video-header h3 {
       font-size: 1.35rem;
       margin-bottom: 0.7rem;
       color: #3bb3b3;
     }
 
-    .video-info p {
+    .video-header p {
       color: #666;
       font-size: 1.1rem;
       line-height: 1.5;
+      margin: 0;
+    }
+
+    /* YouTube 嵌入视频的响应式容器 */
+    .video-embed {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 宽高比 */
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
     }
 
     .hero-description {
@@ -369,8 +370,16 @@
         gap: 4vh;
       }
       
-      .video-link-container {
+      .video-container {
         padding: 2rem;
+      }
+      
+      .video-header h3 {
+        font-size: 1.2rem;
+      }
+      
+      .video-header p {
+        font-size: 1rem;
       }
       
       .hero-description {
@@ -391,16 +400,6 @@
         text-align: center;
       }
       
-      .video-link {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .video-thumbnail {
-        width: 100%;
-        max-width: 300px;
-      }
-      
       .nav-arrow {
         width: 50px;
         height: 50px;
@@ -419,6 +418,10 @@
         padding: 5px 6px;
         font-size: 0.8em;
       }
+      
+      .video-container {
+        padding: 1.5rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -430,7 +433,7 @@
         max-width: 100%;
       }
       
-      .video-link-container,
+      .video-container,
       .hero-description {
         max-width: 100%;
       }
@@ -450,6 +453,18 @@
       
       .hero-section {
         padding: 12vh 2vw 4vh 2vw;
+      }
+      
+      .video-container {
+        padding: 1.2rem;
+      }
+      
+      .video-header h3 {
+        font-size: 1.1rem;
+      }
+      
+      .video-header p {
+        font-size: 0.95rem;
       }
     }
 
@@ -502,16 +517,19 @@
     <img src="../assets/img/home/HomeBanner.png" alt="Home Banner" class="home-banner">
     
     <div class="hero-content-wrapper">
-      <div class="video-link-container">
-        <a href="https://www.youtube.com/watch?v=-iXQ-OE37Yg" target="_blank" rel="noopener noreferrer" class="video-link">
-          <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/-iXQ-OE37Yg/hqdefault.jpg" alt="Demo Video Thumbnail">
-          </div>
-          <div class="video-info">
-            <h3>Acoustic Microfluidic Gentle Cell Sorting</h3>
-            <p>Watch our demo video to learn about CellWave<sup>®</sup> 's gentle and efficient single cell sorting technology.</p>
-          </div>
-        </a>
+      <div class="video-container">
+        <div class="video-header">
+          <h3>Acoustic Microfluidic Gentle Cell Sorting</h3>
+          <p>Watch our demo video to learn about CellWave<sup>®</sup> 's gentle and efficient single cell sorting technology.</p>
+        </div>
+        <div class="video-embed">
+          <iframe 
+            src="https://www.youtube.com/embed/-iXQ-OE37Yg?rel=0&showinfo=0&modestbranding=1" 
+            title="Acoustic Microfluidic Gentle Cell Sorting Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
       
       <div class="hero-description">
