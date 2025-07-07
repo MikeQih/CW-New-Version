@@ -293,6 +293,36 @@
       margin-bottom: 0.5rem;
       color: #111;
       line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .linkedin-icon {
+      width: 32px;
+      height: 32px;
+      background: #0077b5;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .linkedin-icon:hover {
+      background: #005885;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+    }
+
+    .linkedin-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .details-text h3 {
@@ -350,6 +380,12 @@
 
     /* 响应式设计 */
     @media (max-width: 900px) {
+      .details-text h2 {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+      
       .nav-links {
         gap: 4px;
       }
@@ -573,7 +609,8 @@
         image: "../assets/img/leadership/teamPhoto/Bob.png",
         description: "Robert brings extensive technical and business development experience to CellWave. He successfully grew a software start-up into a multi-million dollar sales business, demonstrating his ability to scale innovative technologies.",
         education: "BASc University of Toronto, MSc London School of Economics",
-        expertise: "Business Development, Strategic Planning, Technology Commercialization"
+        expertise: "Business Development, Strategic Planning, Technology Commercialization",
+        linkedin: "https://www.linkedin.com/in/robertfu/"
       },
       ye: {
         name: "Assoc. Prof. Ye Ai",
@@ -581,7 +618,8 @@
         image: "../assets/img/leadership/teamPhoto/Ye.png",
         description: "With more than 15 years of experience in research and development of acoustic microfluidic cell manipulation for single cell research, Prof. Ye Ai is a leading expert in the field. He concurrently serves as Professor at Singapore University of Technology and Design.",
         education: "Postdoctoral Researcher at Los Alamos National Laboratory",
-        expertise: "Acoustic Microfluidics, Single Cell Research, Bioengineering"
+        expertise: "Acoustic Microfluidics, Single Cell Research, Bioengineering",
+        linkedin: "https://www.linkedin.com/in/ye-ai-3855701b/"
       },
       chayakorn: {
         name: "Dr Chayakorn Petchakup",
@@ -589,7 +627,8 @@
         image: "../assets/img/leadership/teamPhoto/Chayakorn.jpg",
         description: "Dr. Petchakup brings more than 10 years of R&D experience in integrated microfluidics, combining label-free separation, biophysical cytometry, and machine learning for immune cell phenotyping in biological samples.",
         education: "PhD, Nanyang Technological University",
-        expertise: "Microfluidics Integration, Machine Learning, Immune Cell Analysis"
+        expertise: "Microfluidics Integration, Machine Learning, Immune Cell Analysis",
+        linkedin: "https://www.linkedin.com/in/chpetch/"
       }
       
       /* LAWRENCE 数据已注释掉 */
@@ -635,7 +674,14 @@
           <img src="${leader.image}" alt="${leader.name}">
         </div>
         <div class="details-text">
-          <h2>${leader.name}</h2>
+          <h2>
+            ${leader.name}
+            <a href="${leader.linkedin}" target="_blank" class="linkedin-icon" title="View LinkedIn Profile">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </h2>
           <h3>${leader.position}</h3>
           <p>${leader.description}</p>
           <p><strong>Education & Background:</strong> ${leader.education}</p>
