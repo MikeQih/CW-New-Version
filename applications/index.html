@@ -613,12 +613,12 @@
           <p>Dead cells present a significant challenge for single cell RNA sequencing (scRNAseq). Existing methods for dead cell removal also remove a significant number of live cells, compromising sample quality and experimental results.</p>
           
           <div class="highlight-stat">
-            <strong>Key Achievement:</strong> Over 94% of dead cells removed while preserving live cell population
+            <strong>Key Achievement:</strong> CellWave maintains over 80% cell viability across all cell types, while FACS reduces viability to 45-65%
           </div>
           
-          <p>Dead cells can be removed using CellWave by labelling the dead cells with a dead cell staining kit. Live cells flow through the sorting chip unperturbed, whilst the dead cells are actively removed.</p>
+          <p>The comparative study demonstrates CellWave's superior performance across multiple cell types including MCF-7, MDA-231, cardiomyocytes (CMs), and human induced pluripotent stem cells (h-iPSCs). While traditional FACS sorting significantly reduces cell viability (shown in red bars), CellWave sorting maintains high viability levels (shown in green bars) comparable to the original unsorted samples (shown in blue bars).</p>
           
-          <p>This gentle approach ensures that your valuable sample maintains its integrity for downstream scRNAseq analysis, providing more accurate and reliable sequencing results.</p>
+          <p>This gentle acoustic approach ensures that your valuable sample maintains its integrity for downstream scRNAseq analysis, providing more accurate and reliable sequencing results with minimal cell loss.</p>
         </div>
         <div class="app-visual">
           <img src="../assets/img/applications/Viability_Plot.png" alt="Dead cell removal process" class="app-image">
@@ -628,19 +628,19 @@
       
       <div class="data-cards">
         <div class="data-card">
-          <h4>Dead Cell Removal</h4>
-          <div class="stat">94%</div>
-          <p class="description">of dead cells successfully removed</p>
+          <h4>CellWave Viability</h4>
+          <div class="stat">80-90%</div>
+          <p class="description">maintained across all cell types</p>
         </div>
         <div class="data-card">
-          <h4>Live Cell Recovery</h4>
-          <div class="stat">97%</div>
-          <p class="description">live cell fraction after sorting</p>
+          <h4>FACS Viability</h4>
+          <div class="stat">45-65%</div>
+          <p class="description">significant viability reduction</p>
         </div>
         <div class="data-card">
-          <h4>Starting Viability</h4>
-          <div class="stat">59%</div>
-          <p class="description">initial live cell percentage</p>
+          <h4>Cell Types Tested</h4>
+          <div class="stat">4</div>
+          <p class="description">MCF-7, MDA-231, CMs, h-iPSCs</p>
         </div>
       </div>
     </section>
@@ -674,6 +674,8 @@
     </section>
 
     <!-- Cardiomyocytes section -->
+    <!-- Cardiomyocytes section -->
+    <!-- Cardiomyocytes section -->
     <section id="cardio" class="application-section">
       <div class="app-content">
         <div class="app-text">
@@ -681,34 +683,35 @@
           <p>Heart cells (cardiomyocytes) are among the most fragile cell types, making their purification extremely challenging with conventional sorting methods. Traditional FACS can kill up to 50% of these precious cells.</p>
           
           <div class="highlight-stat">
-            <strong>Breakthrough Result:</strong> Cardiomyocyte purity increased from ~50% to 97% with >95% viability
+            <strong>Breakthrough Result:</strong> Cardiomyocyte purity increased from 49.4% to 95.4% with maintained viability
           </div>
           
-          <p>CellWave's gentle acoustic sorting ensures the viability of even the most fragile cell types like cardiomyocytes. This breakthrough enables researchers to work with pure, viable heart cells for regenerative medicine, drug screening, and cardiac research.</p>
+          <p>The sorting process demonstrates remarkable precision in isolating cardiomyocytes from mixed cell populations. Starting with an input mixture containing approximately 50% cardiomyocytes, CellWave's gentle acoustic sorting technology successfully enriches the population to over 95% purity.</p>
+          
+          <p>This breakthrough enables researchers to work with pure, viable heart cells for regenerative medicine, drug screening, and cardiac research applications where high purity is essential for meaningful results.</p>
           
           <p><em>"If there were a system capable of purifying heart cells and maintaining viability, it would be immensely beneficial for the scientific community."</em> - Asst. Prof. Chrishan Ramachandra, Stem Cell Scientist</p>
         </div>
         <div class="app-visual">
-          <img src="../assets/img/applications/Viability_Plot.png" alt="Cardiomyocytes purity comparison" class="app-image">
-          <p class="image-caption">Cardiomyocyte purity before and after CellWave sorting</p>
-        </div>
-      </div>
-      
-      <div class="data-cards">
-        <div class="data-card">
-          <h4>Purity Achievement</h4>
-          <div class="stat">97%</div>
-          <p class="description">final cardiomyocyte purity</p>
-        </div>
-        <div class="data-card">
-          <h4>Cell Viability</h4>
-          <div class="stat">>95%</div>
-          <p class="description">post-sort cell viability maintained</p>
-        </div>
-        <div class="data-card">
-          <h4>Viability Loss</h4>
-          <div class="stat">3-4%</div>
-          <p class="description">vs 50% with traditional FACS</p>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+              <div style="text-align: center; flex: 1; min-width: 200px;">
+                <img src="../assets/img/applications/InputMixture.png" alt="Input mixture flow cytometry plot" class="app-image" style="max-width: 300px;">
+                <p class="image-caption" style="margin-top: 0.5rem; font-weight: bold;">Input Mixture (49.4% CM purity)</p>
+              </div>
+              <div style="text-align: center; flex: 1; min-width: 200px;">
+                <img src="../assets/img/applications/SortedCM.png" alt="Sorted cardiomyocytes flow cytometry plot" class="app-image" style="max-width: 300px;">
+                <p class="image-caption" style="margin-top: 0.5rem; font-weight: bold;">Sorted CM (95.4% CM purity)</p>
+              </div>
+            </div>
+            <div style="text-align: center; width: 100%; max-width: 600px;">
+              <video controls autoplay loop muted style="width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+                <source src="../assets/video/applications/animation.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p class="image-caption" style="margin-top: 0.5rem; font-weight: bold;">Real-time cardiomyocyte sorting demonstration</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
