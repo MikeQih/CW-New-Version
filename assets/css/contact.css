@@ -1,0 +1,257 @@
+/* ===== 联系页面专用样式 ===== */
+
+/* 联系页面主要内容区域重写 */
+main {
+  max-width: 1200px; /* 联系页面保持默认宽度 */
+  min-height: 80vh;
+}
+
+/* ===== 联系方式网格 ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeInBanner 0.8s ease-in forwards;
+  animation-delay: 0.8s;
+}
+
+.contact-section {
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.contact-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(59, 179, 179, 0.15);
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  background: #3bb3b3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.contact-section h2 {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.contact-section p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+/* ===== 邮箱链接样式 ===== */
+.email-link {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #3bb3b3;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 0.25rem;
+}
+
+.email-link:hover {
+  background: #2a9999;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
+}
+
+/* ===== LinkedIn 部分 ===== */
+.linkedin-section {
+  background: #f9f9f9;
+  color: #111;
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  margin: 3rem 0;
+  opacity: 0;
+  animation: fadeInBanner 0.8s ease-in forwards;
+  animation-delay: 1.4s;
+}
+
+.linkedin-section h2 {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 1.8em;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.linkedin-section p {
+  font-size: 1.1em;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.linkedin-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #0077b5;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+}
+
+.linkedin-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,119,181,0.15);
+  border-color: #0077b5;
+}
+
+.linkedin-icon {
+  width: 24px;
+  height: 24px;
+  background: #0077b5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== 联系表单 ===== */
+.contact-form-section {
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: 3rem;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeInBanner 0.8s ease-in forwards;
+  animation-delay: 2.0s;
+}
+
+.contact-form-section h2 {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #111;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3bb3b3;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-button {
+  background: #3bb3b3;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 2rem auto 0 auto;
+}
+
+.submit-button:hover {
+  background: #2a9999;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
+}
+
+/* ===== 联系页面响应式设计 ===== */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-form-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .arrow-up {
+    bottom: 10vh;
+  }
+  
+  .arrow-down {
+    bottom: 3vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-section,
+  .linkedin-section,
+  .contact-form-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .email-link {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}

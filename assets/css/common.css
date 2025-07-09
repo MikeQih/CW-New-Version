@@ -1,0 +1,311 @@
+/* ===== 通用样式 - 所有页面共享 ===== */
+
+/* 基础重置和字体 */
+* {
+  box-sizing: border-box;
+}
+
+body { 
+  font-family: 'Arial', 'Helvetica', sans-serif; 
+  margin: 0; 
+  background: #fff; 
+  color: #111; 
+  line-height: 1.6;
+}
+
+/* ===== 头部导航栏样式 ===== */
+header {
+  background: #f8f8f8;
+  padding: 0 20px;
+  box-sizing: border-box;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 12vh;
+  min-height: 70px;
+  max-height: 120px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+  height: 80%;
+  max-height: 64px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+/* 导航栏样式 */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links > li {
+  position: relative;
+}
+
+.nav-links a {
+  display: block;
+  padding: 10px 18px;
+  color: #111;
+  text-decoration: none;
+  font-size: 1.05em;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  background: #e6f7ff;
+  color: #3bb3b3;
+}
+
+.nav-links a.active {
+  background: #3bb3b3;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* 悬浮子菜单样式 */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 2000;
+  padding: 8px 0;
+}
+
+.nav-links > li:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95em;
+  font-weight: 400;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.nav-dropdown a:hover {
+  background: #f0f8ff;
+  color: #3bb3b3;
+  padding-left: 24px;
+}
+
+/* ===== 主要内容区域 ===== */
+main { 
+  padding: 40px 20px; 
+  padding-top: calc(12vh + 60px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== 导航箭头样式 ===== */
+.nav-arrow {
+  position: fixed;
+  right: 3vw;
+  width: 60px;
+  height: 60px;
+  background: #3bb3b3;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+  cursor: pointer;
+  z-index: 3000;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.nav-arrow:hover {
+  background: #2a9999;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.arrow-down {
+  bottom: 4vh;
+}
+
+.arrow-up {
+  bottom: 12vh;
+  display: none;
+}
+
+/* ===== 通用动画效果 ===== */
+@keyframes fadeInBanner {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.scroll-animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== 页面标题通用样式 ===== */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeInBanner 1.2s ease-in forwards;
+}
+
+.page-header h1 {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.page-header p {
+  font-size: 1.2em;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== 底部样式 ===== */
+.footer {
+  text-align: center;
+  font-size: 1em;
+  color: #fff;
+  background: #3a4667;
+  padding: 30px 0;
+  margin-top: 4rem;
+}
+
+/* ===== 响应式设计 - 通用 ===== */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 4px;
+  }
+  
+  .nav-links a {
+    padding: 8px 12px;
+    font-size: 0.95em;
+  }
+  
+  .nav-dropdown {
+    min-width: 180px;
+  }
+  
+  .nav-dropdown a {
+    font-size: 0.9em;
+    padding: 10px 16px;
+  }
+  
+  .nav-arrow {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  main {
+    padding: 20px 15px;
+    padding-top: calc(8vh + 40px);
+  }
+  
+  header {
+    padding: 0 12px;
+    height: 8vh;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 2px;
+  }
+  
+  .nav-links a {
+    padding: 6px 8px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 2px;
+  }
+  
+  .nav-links a {
+    padding: 5px 6px;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    min-height: 80px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  
+  .nav-links {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  main {
+    padding-top: 12vh;
+  }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1400px) {
+  .nav-links a {
+    padding: 12px 24px;
+    font-size: 1.1em;
+  }
+}

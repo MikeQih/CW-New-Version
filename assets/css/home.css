@@ -1,0 +1,258 @@
+/* ===== 首页专用样式 ===== */
+
+/* 首页主要内容区域重写 */
+main {
+  padding: 0; /* 首页不需要默认padding */
+  padding-top: 0;
+  max-width: none; /* 首页全宽 */
+  margin: 0;
+}
+
+/* ===== 全屏首页部分 ===== */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 14vh 2vw 4vh 2vw;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.home-banner {
+  width: 95vw;
+  max-width: 1200px;
+  min-width: 320px;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+  opacity: 0;
+  animation: fadeInBanner 1.2s ease-in forwards;
+  margin-bottom: 4vh;
+}
+
+.hero-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5vh;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* ===== YouTube 视频容器样式 ===== */
+.video-container {
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 2.5rem;
+  background: white;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  opacity: 0;
+  animation: fadeInBanner 0.8s ease-in forwards;
+  animation-delay: 1.5s;
+}
+
+.video-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.video-header h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.7rem;
+  color: #3bb3b3;
+}
+
+.video-header p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* YouTube 嵌入视频的响应式容器 */
+.video-embed {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 宽高比 */
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
+.hero-description {
+  background: #f8f9fa;
+  border-left: 4px solid #3bb3b3;
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 750px;
+  opacity: 0;
+  animation: fadeInBanner 0.8s ease-in forwards;
+  animation-delay: 1.9s;
+  transform: translateY(20px);
+}
+
+.hero-description p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #444;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ===== 内容部分 ===== */
+.content-section {
+  min-height: 100vh;
+  padding: 8vh 2vw;
+  position: relative;
+}
+
+.approach-section {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 4vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.approach-text {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.15em;
+  line-height: 1.7;
+}
+
+.approach-text h2 {
+  font-size: 2.5em;
+  margin-bottom: 1.2em;
+  font-family: 'Arial Black', Arial, sans-serif;
+  text-align: left;
+}
+
+.approach-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.approach-img img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== 首页响应式设计 ===== */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 10vh 2vw 4vh 2vw;
+  }
+  
+  .home-banner {
+    width: 92vw;
+    margin-bottom: 3vh;
+  }
+  
+  .hero-content-wrapper {
+    gap: 4vh;
+  }
+  
+  .video-container {
+    padding: 2rem;
+  }
+  
+  .video-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .video-header p {
+    font-size: 1rem;
+  }
+  
+  .hero-description {
+    padding: 1.8rem 2rem;
+  }
+  
+  .hero-description p {
+    font-size: 1.15rem;
+  }
+  
+  .approach-section {
+    flex-direction: column;
+    gap: 3vh;
+  }
+  
+  .approach-text h2 {
+    font-size: 2em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-banner {
+    width: 90vw;
+  }
+  
+  .hero-content-wrapper {
+    max-width: 100%;
+  }
+  
+  .video-container,
+  .hero-description {
+    max-width: 100%;
+  }
+  
+  .hero-section {
+    padding: 12vh 2vw 4vh 2vw;
+  }
+  
+  .video-container {
+    padding: 1.2rem;
+  }
+  
+  .video-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .video-header p {
+    font-size: 0.95rem;
+  }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1400px) {
+  .hero-section {
+    padding: 16vh 2vw 6vh 2vw;
+  }
+  
+  .home-banner {
+    max-width: 1400px;
+  }
+}
