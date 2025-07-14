@@ -1,6 +1,6 @@
-/* ===== 通用样式 - 所有页面共享 ===== */
+/* ===== Global Styles - Shared Across All Pages ===== */
 
-/* 基础重置和字体 */
+/* Basic reset and fonts */
 * {
   box-sizing: border-box;
 }
@@ -13,7 +13,7 @@ body {
   line-height: 1.6;
 }
 
-/* ===== 头部导航栏样式 ===== */
+/* ===== Header Navigation Bar Styles ===== */
 header {
   background: #f8f8f8;
   padding: 0 20px;
@@ -40,7 +40,7 @@ header {
   cursor: pointer;
 }
 
-/* 导航栏样式 */
+/* Navigation bar links */
 nav {
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ nav {
   font-weight: bold;
 }
 
-/* 悬浮子菜单样式 */
+/* Hoverable dropdown menu */
 .nav-dropdown {
   position: absolute;
   top: 100%;
@@ -122,7 +122,7 @@ nav {
   padding-left: 24px;
 }
 
-/* ===== 主要内容区域 ===== */
+/* ===== Main Content Area ===== */
 main { 
   padding: 40px 20px; 
   padding-top: calc(12vh + 60px);
@@ -130,7 +130,7 @@ main {
   margin: 0 auto;
 }
 
-/* ===== 导航箭头样式 ===== */
+/* ===== Navigation Arrows (scroll arrows) ===== */
 .nav-arrow {
   position: fixed;
   right: 3vw;
@@ -165,7 +165,7 @@ main {
   display: none;
 }
 
-/* ===== 通用动画效果 ===== */
+/* ===== Global Animations ===== */
 @keyframes fadeInBanner {
   from { 
     opacity: 0; 
@@ -188,7 +188,7 @@ main {
   transform: translateY(0);
 }
 
-/* ===== 页面标题通用样式 ===== */
+/* ===== Shared Page Header Style ===== */
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -211,7 +211,7 @@ main {
   line-height: 1.6;
 }
 
-/* ===== 底部样式 ===== */
+/* ===== Footer ===== */
 .footer {
   text-align: center;
   font-size: 1em;
@@ -221,37 +221,37 @@ main {
   margin-top: 4rem;
 }
 
-/* ===== 响应式设计 - 通用 ===== */
+/* ===== Responsive Design - General ===== */
 @media (max-width: 900px) {
   .nav-links {
     gap: 4px;
   }
-  
+
   .nav-links a {
     padding: 8px 12px;
     font-size: 0.95em;
   }
-  
+
   .nav-dropdown {
     min-width: 180px;
   }
-  
+
   .nav-dropdown a {
     font-size: 0.9em;
     padding: 10px 16px;
   }
-  
+
   .nav-arrow {
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
   }
-  
+
   main {
     padding: 20px 15px;
     padding-top: calc(8vh + 40px);
   }
-  
+
   header {
     padding: 0 12px;
     height: 8vh;
@@ -263,7 +263,7 @@ main {
   .nav-links {
     gap: 2px;
   }
-  
+
   .nav-links a {
     padding: 6px 8px;
     font-size: 0.9em;
@@ -276,7 +276,7 @@ main {
     justify-content: flex-end;
     gap: 2px;
   }
-  
+
   .nav-links a {
     padding: 5px 6px;
     font-size: 0.8em;
@@ -291,18 +291,18 @@ main {
     padding: 8px 12px;
     gap: 8px;
   }
-  
+
   .nav-links {
     justify-content: center;
     width: 100%;
   }
-  
+
   main {
     padding-top: 12vh;
   }
 }
 
-/* 大屏幕优化 */
+/* Large Screen Optimization */
 @media (min-width: 1400px) {
   .nav-links a {
     padding: 12px 24px;

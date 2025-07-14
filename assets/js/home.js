@@ -1,9 +1,9 @@
-/* ===== 首页专用JavaScript功能 ===== */
+/* ===== JavaScript Functions for Homepage ===== */
 
-// ===== 首页特定导航功能 =====
+// ===== Homepage-specific navigation functionality =====
 
 /**
- * 滚动到内容部分
+ * Scroll to the content section
  */
 function scrollToContent() {
   const contentSection = document.getElementById('content');
@@ -15,7 +15,7 @@ function scrollToContent() {
 }
 
 /**
- * 滚动到首页顶部
+ * Scroll to the top (hero) section
  */
 function scrollToHero() {
   const heroSection = document.getElementById('hero');
@@ -26,10 +26,10 @@ function scrollToHero() {
   }
 }
 
-// ===== 首页箭头导航逻辑 =====
+// ===== Homepage arrow navigation logic =====
 
 /**
- * 更新首页箭头显示状态
+ * Update the display state of navigation arrows
  */
 function updateHomeArrowDisplay() {
   const heroSection = document.getElementById('hero');
@@ -49,17 +49,17 @@ function updateHomeArrowDisplay() {
   }
 }
 
-// ===== 事件监听器 =====
+// ===== Event listeners =====
 
 /**
- * 首页专用滚动事件监听器
+ * Scroll listener for homepage
  */
 function initHomeScrollListener() {
   window.addEventListener('scroll', function() {
-    // 调用通用的箭头更新函数
+    // Call the shared arrow display update function
     updateHomeArrowDisplay();
     
-    // 调用通用的滚动动画函数
+    // Call the shared scroll animation handler
     if (window.CellWaveCommon) {
       window.CellWaveCommon.handleScrollAnimations();
     }
@@ -67,10 +67,10 @@ function initHomeScrollListener() {
 }
 
 /**
- * 首页初始化
+ * Homepage initialization
  */
 function initHomePage() {
-  // 为箭头按钮添加点击事件
+  // Add click event listeners to arrow buttons
   const arrowDown = document.getElementById('arrowDown');
   const arrowUp = document.getElementById('arrowUp');
   
@@ -84,14 +84,14 @@ function initHomePage() {
     arrowUp.title = 'Back to Top';
   }
   
-  // 初始化滚动监听器
+  // Initialize scroll listener
   initHomeScrollListener();
   
-  // 初始化箭头显示状态
+  // Initialize arrow display state
   updateHomeArrowDisplay();
 }
 
-// ===== 页面加载完成后初始化 =====
+// ===== Initialize after DOM is fully loaded =====
 document.addEventListener('DOMContentLoaded', function() {
   initHomePage();
 });

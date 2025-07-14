@@ -58,7 +58,7 @@
       min-height: 80vh;
     }
 
-    /* 页面标题 */
+    /* Page Title */
     .page-header {
       text-align: center;
       margin-bottom: 4rem;
@@ -80,7 +80,7 @@
       margin: 0 auto;
     }
 
-    /* 联系方式网格 */
+    /* Contact Method Network */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -131,7 +131,7 @@
       line-height: 1.7;
     }
 
-    /* 邮箱链接样式 */
+    /* Email Link Style */
     .email-link {
       display: inline-block;
       padding: 0.8rem 1.5rem;
@@ -150,10 +150,10 @@
       box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
     }
 
-    /* LinkedIn 部分 */
+    /* LinkedIn Part */
     .linkedin-section {
-      background: #f9f9f9; /* 改为灰白色背景 */
-      color: #111; /* 改为黑色文字 */
+      background: #f9f9f9; /* Grey Background */
+      color: #111; /* Black Word */
       border-radius: 16px;
       padding: 2.5rem;
       text-align: center;
@@ -167,13 +167,13 @@
       font-family: 'Arial Black', Arial, sans-serif;
       font-size: 1.8em;
       margin-bottom: 1rem;
-      color: #111; /* 黑色标题 */
+      color: #111; /* Black Title */
     }
 
     .linkedin-section p {
       font-size: 1.1em;
       margin-bottom: 2rem;
-      color: #666; /* 灰色副文本 */
+      color: #666; /* Grey Content */
     }
 
     .linkedin-button {
@@ -182,7 +182,7 @@
       gap: 0.8rem;
       padding: 1rem 2rem;
       background: white;
-      color: #0077b5; /* 保持LinkedIn蓝色 */
+      color: #0077b5; /* Keep LinkedIn Blue */
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
@@ -193,7 +193,7 @@
 
     .linkedin-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,119,181,0.15); /* LinkedIn蓝色阴影 */
+      box-shadow: 0 8px 20px rgba(0,119,181,0.15); /* LinkedIn Blue Shadow */
       border-color: #0077b5;
     }
 
@@ -209,7 +209,7 @@
       font-weight: bold;
     }
 
-    /* 联系表单 */
+    /* Contact Form */
     .contact-form-section {
       background: #f9f9f9;
       border-radius: 16px;
@@ -293,7 +293,7 @@
       box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
     }
 
-    /* 导航箭头 */
+    /* Navigation Arrow */
     .nav-arrow {
       position: fixed;
       right: 3vw;
@@ -328,13 +328,13 @@
       display: none;
     }
 
-    /* 动画效果 */
+    /* Animation Effecct */
     @keyframes fadeInBanner {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: none; }
     }
 
-    /* 导航栏样式 */
+    /* Navbar Style */
     .nav-menu {
       position: relative;
       display: inline-block;
@@ -406,7 +406,7 @@
       margin-top: 4rem;
     }
 
-    /* 响应式设计 */
+    /* Responsive Design */
     @media (max-width: 900px) {
       .contact-grid {
         grid-template-columns: 1fr;
@@ -565,7 +565,7 @@
     </div>
   </main>
 
-  <!-- 导航箭头 -->
+  <!-- Navigation Arrow -->
   <div class="nav-arrow arrow-down" id="arrowDown" onclick="scrollToNextSection()" title="Next Section">
     &#8595;
   </div>
@@ -580,24 +580,24 @@
 
   <script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      // 如果你想使用Netlify Forms，注释掉 e.preventDefault()
+      // Comment out e.preventDefault(), if you want to use Netlify Forms.
       // e.preventDefault();
       
-      // Netlify Forms会自动处理表单提交
-      // 表单提交后，Netlify会发送邮件通知到你指定的邮箱
+      // Netlify Forms handles form submissions automatically
+      // After the form is submitted, Netlify sends an email notification to the email address you specified  
       
-      // 显示提交成功消息
+      // Display a successful submission message
       alert('Thank you for your message! We will get back to you soon.');
     });
 
-    // 定义页面区块，按顺序排列
+    // Define page blocks, in order
     const sections = ['#contact-info', '#linkedin', '#contact-form'];
     
     function getCurrentSectionIndex() {
       const scrollPosition = window.scrollY;
       const headerHeight = document.querySelector('header').offsetHeight;
       
-      // 为每个区块检查当前滚动位置
+      // Check current scroll position for each block
       for (let i = 0; i < sections.length; i++) {
         const section = document.querySelector(sections[i]);
         if (section) {
@@ -608,7 +608,7 @@
           if (nextSection) {
             sectionBottom = nextSection.offsetTop - headerHeight - 50;
           } else {
-            // 最后一个区块，到页面底部
+            // Last block, to the bottom of the page
             sectionBottom = document.body.scrollHeight;
           }
           
@@ -618,7 +618,7 @@
         }
       }
       
-      // 默认情况
+      // Default Situation
       if (scrollPosition < 200) {
         return 0;
       }
@@ -630,11 +630,11 @@
       const currentIndex = getCurrentSectionIndex();
       
       if (currentIndex < sections.length - 1) {
-        // 如果不是最后一个区块，滚动到下一个区块
+        // If not the last section, scroll to the next section
         const nextIndex = currentIndex + 1;
         scrollToSection(sections[nextIndex]);
       } else {
-        // 如果在最后一个区块（表单），滚动到页面底部（footer）
+        // If at the last section (form), scroll to the bottom of the page (footer)
         window.scrollTo({
           top: document.body.scrollHeight,
           behavior: 'smooth'
@@ -646,7 +646,7 @@
       const scrollPosition = window.scrollY;
       const pageHeight = document.body.scrollHeight - window.innerHeight;
       
-      // 如果在页面底部，返回到最后一个区块
+      // If at the bottom of the page, scroll back to the last section
       if (scrollPosition >= pageHeight - 50) {
         scrollToSection(sections[sections.length - 1]);
         return;
@@ -655,10 +655,10 @@
       const currentIndex = getCurrentSectionIndex();
       
       if (currentIndex > 0) {
-        // 滚动到上一个区块
+        // Scroll to the previous section
         scrollToSection(sections[currentIndex - 1]);
       } else {
-        // 如果在第一个区块，滚动到页面顶部
+        // If at the first section, scroll to the top of the page
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
@@ -680,24 +680,24 @@
       }
     }
 
-    // 监听滚动事件，切换箭头显示
+    // Listen to scroll events to toggle arrow visibility
     window.addEventListener('scroll', function() {
       const arrowDown = document.getElementById('arrowDown');
       const arrowUp = document.getElementById('arrowUp');
       const scrollPosition = window.scrollY;
       const pageHeight = document.body.scrollHeight - window.innerHeight;
       
-      // 在顶部 (前200px)
+      // At the top (within first 200px)
       if (scrollPosition < 200) {
         arrowDown.style.display = 'flex';
         arrowUp.style.display = 'none';
       }
-      // 在底部 (最后50px) - 像Applications页面一样
+      // At the bottom (last 50px) - like Applications page
       else if (scrollPosition >= pageHeight - 50) {
         arrowDown.style.display = 'none';
         arrowUp.style.display = 'flex';
       }
-      // 在中间部分
+      // In the middle
       else {
         arrowDown.style.display = 'flex';
         arrowUp.style.display = 'flex';

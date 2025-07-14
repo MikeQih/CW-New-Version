@@ -1,6 +1,6 @@
-/* ===== 关于页面专用JavaScript功能 ===== */
+/* ===== About Page Specific JavaScript Features ===== */
 
-// ===== 团队成员数据 =====
+// ===== Leadership Data =====
 const leaderData = {
   robert: {
     name: "Mr. Robert Fu",
@@ -31,11 +31,11 @@ const leaderData = {
   }
 };
 
-// ===== 团队成员交互功能 =====
+// ===== Leadership Interaction Features =====
 
 /**
- * 显示团队成员详细信息
- * @param {string} leaderId - 团队成员ID
+ * Show detailed information of a leader
+ * @param {string} leaderId - Leader ID
  */
 function showLeaderDetails(leaderId) {
   const leader = leaderData[leaderId];
@@ -44,18 +44,18 @@ function showLeaderDetails(leaderId) {
   
   if (!leader || !detailsContent || !leaderDetails) return;
   
-  // 清除所有活动状态
+  // Remove active state from all cards
   document.querySelectorAll('.leader-card').forEach(card => {
     card.classList.remove('active');
   });
   
-  // 设置当前卡片为活动状态
+  // Set current card as active
   const currentCard = document.querySelector(`[data-leader="${leaderId}"]`);
   if (currentCard) {
     currentCard.classList.add('active');
   }
   
-  // 生成详情内容
+  // Generate detail content
   detailsContent.innerHTML = `
     <div class="details-image">
       <img src="${leader.image}" alt="${leader.name}">
@@ -76,17 +76,17 @@ function showLeaderDetails(leaderId) {
     </div>
   `;
   
-  // 显示详情区域
+  // Show details section
   leaderDetails.classList.add('active');
   
-  // 等待动画完成后再滚动，确保滚动位置准确
+  // Wait for animation to complete then scroll to ensure accurate position
   setTimeout(() => {
     leaderDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, 350);
 }
 
 /**
- * 关闭详细信息展示
+ * Close the detail display
  */
 function closeDetails() {
   const leaderDetails = document.getElementById('leaderDetails');
@@ -94,12 +94,12 @@ function closeDetails() {
   
   leaderDetails.classList.remove('active');
   
-  // 清除所有活动状态
+  // Remove active state from all cards
   document.querySelectorAll('.leader-card').forEach(card => {
     card.classList.remove('active');
   });
   
-  // 等待关闭动画完成后，滚动到页面标题位置
+  // Wait for closing animation to finish then scroll to page header
   setTimeout(() => {
     const pageHeader = document.querySelector('.page-header');
     if (pageHeader) {
@@ -108,10 +108,10 @@ function closeDetails() {
   }, 350);
 }
 
-// ===== 事件监听器 =====
+// ===== Event Listeners =====
 
 /**
- * 初始化团队成员卡片点击事件
+ * Initialize leader card click events
  */
 function initLeaderCardEvents() {
   document.querySelectorAll('.leader-card').forEach(card => {
@@ -125,7 +125,7 @@ function initLeaderCardEvents() {
 }
 
 /**
- * 初始化点击外部关闭功能
+ * Initialize outside click to close detail display
  */
 function initOutsideClickClose() {
   document.addEventListener('click', function(e) {
@@ -142,28 +142,28 @@ function initOutsideClickClose() {
 }
 
 /**
- * 关于页面初始化
+ * Initialize about page
  */
 function initAboutPage() {
-  // 初始化团队成员卡片事件
+  // Initialize leader card click events
   initLeaderCardEvents();
   
-  // 初始化点击外部关闭功能
+  // Initialize outside click close functionality
   initOutsideClickClose();
   
-  // 为关闭按钮添加事件（如果存在）
+  // Add event to close button if exists
   const closeButton = document.querySelector('.close-details');
   if (closeButton) {
     closeButton.onclick = closeDetails;
   }
 }
 
-// ===== 页面加载完成后初始化 =====
+// ===== Initialize on page load =====
 document.addEventListener('DOMContentLoaded', function() {
   initAboutPage();
 });
 
-// ===== 导出函数供全局使用 =====
+// ===== Export functions for global usage =====
 window.AboutPage = {
   showLeaderDetails,
   closeDetails

@@ -1,12 +1,12 @@
-/* ===== 关于页面专用样式 ===== */
+/* ===== Page-Specific Styles ===== */
 
-/* 关于页面主要内容区域重写 */
+/* Override main content area for About page */
 main {
-  max-width: 1400px; /* 关于页面使用更大的宽度 */
+  max-width: 1400px; /* Use wider width for About page */
   min-height: 100vh;
 }
 
-/* ===== 团队成员网格 ===== */
+/* ===== Team Members Grid ===== */
 .leaders {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -87,7 +87,7 @@ main {
   color: #3bb3b3;
 }
 
-/* ===== 详细信息展示区域 ===== */
+/* ===== Detail Display Area ===== */
 .leader-details {
   background: #fff;
   border-radius: 16px;
@@ -210,7 +210,7 @@ main {
   margin-bottom: 1rem;
 }
 
-/* ===== 关于页面响应式设计 ===== */
+/* ===== About Page Responsive Design ===== */
 @media (max-width: 900px) {
   .details-text h2 {
     flex-direction: column;

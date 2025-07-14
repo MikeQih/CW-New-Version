@@ -1,10 +1,8 @@
-/* ===== 通用JavaScript功能 - 所有页面共享 ===== */
-
-// ===== 通用导航功能 =====
+/* General JS, All pages use ===== */
 
 /**
- * 平滑滚动到指定区块
- * @param {string} sectionId - 目标区块的选择器
+ * Smooth Scroll
+ * @param {string} sectionId - Target Block - scroll to sectionId
  */
 function scrollToSection(sectionId) {
   const target = document.querySelector(sectionId);
@@ -21,7 +19,7 @@ function scrollToSection(sectionId) {
 }
 
 /**
- * 滚动到页面顶部
+ * Back to top of the page
  */
 function scrollToTop() {
   window.scrollTo({
@@ -31,7 +29,7 @@ function scrollToTop() {
 }
 
 /**
- * 滚动到页面底部
+ * Go to bottom of the page
  */
 function scrollToBottom() {
   window.scrollTo({
@@ -40,10 +38,10 @@ function scrollToBottom() {
   });
 }
 
-// ===== 锚点链接处理 =====
+// ===== Anchor Handling =====
 
 /**
- * 为所有锚点链接添加平滑滚动效果
+ * Add smooth scrolling effect to all anchor links
  */
 function initSmoothScrolling() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -64,10 +62,10 @@ function initSmoothScrolling() {
   });
 }
 
-// ===== 滚动动画处理 =====
+// ===== Scrolling Animation =====
 
 /**
- * 处理滚动时的元素动画
+ * Handling element animation on scroll
  */
 function handleScrollAnimations() {
   const animateElements = document.querySelectorAll('.scroll-animate');
@@ -81,10 +79,10 @@ function handleScrollAnimations() {
   });
 }
 
-// ===== 箭头导航通用功能 =====
+// ===== Arrow Navigation General Function =====
 
 /**
- * 初始化箭头显示状态
+ * Initialize Arrow Display State
  */
 function initArrowDisplay() {
   const arrowDown = document.getElementById('arrowDown');
@@ -95,7 +93,7 @@ function initArrowDisplay() {
 }
 
 /**
- * 根据滚动位置更新箭头显示
+ * Update arrow display based on scroll position
  */
 function updateArrowDisplay() {
   const arrowDown = document.getElementById('arrowDown');
@@ -106,51 +104,51 @@ function updateArrowDisplay() {
   const scrollPosition = window.scrollY;
   const pageHeight = document.body.scrollHeight - window.innerHeight;
   
-  // 在顶部 (前200px)
+  // At the top (first 200px)
   if (scrollPosition < 200) {
     arrowDown.style.display = 'flex';
     arrowUp.style.display = 'none';
   }
-  // 在底部 (最后50px)
+  // At the bottom (last 50px)
   else if (scrollPosition >= pageHeight - 50) {
     arrowDown.style.display = 'none';
     arrowUp.style.display = 'flex';
   }
-  // 在中间部分
+  // At the middle
   else {
     arrowDown.style.display = 'flex';
     arrowUp.style.display = 'flex';
   }
 }
 
-// ===== 事件监听器 =====
+// ===== Event Listener =====
 
 /**
- * 页面加载完成后初始化
+ * Initialization after the page is loaded
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // 初始化平滑滚动
+  // Initialization after the page is loaded
   initSmoothScrolling();
   
-  // 初始化箭头显示
+  // Initialize arrow display
   initArrowDisplay();
   
-  // 检查可见元素的动画
+  // Checking the animation of visible elements
   handleScrollAnimations();
 });
 
 /**
- * 滚动事件监听器
+ * Scroll event listener
  */
 window.addEventListener('scroll', function() {
-  // 更新箭头显示
+  // Update arrow display
   updateArrowDisplay();
   
-  // 处理滚动动画
+  // Handling scrolling animations
   handleScrollAnimations();
 });
 
-// ===== 导出函数供特定页面使用 =====
+// ===== Export functions to specified page =====
 window.CellWaveCommon = {
   scrollToSection,
   scrollToTop,

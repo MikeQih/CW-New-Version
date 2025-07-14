@@ -1,12 +1,12 @@
-/* ===== 联系页面专用样式 ===== */
+/* ===== Contact Page Specific Styles ===== */
 
-/* 联系页面主要内容区域重写 */
+/* Override main content area for contact page */
 main {
-  max-width: 1200px; /* 联系页面保持默认宽度 */
+  max-width: 1200px; /* Keep default width for contact page */
   min-height: 80vh;
 }
 
-/* ===== 联系方式网格 ===== */
+/* ===== Contact Info Grid ===== */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -57,7 +57,7 @@ main {
   line-height: 1.7;
 }
 
-/* ===== 邮箱链接样式 ===== */
+/* ===== Email Link Styles ===== */
 .email-link {
   display: inline-block;
   padding: 0.8rem 1.5rem;
@@ -76,7 +76,7 @@ main {
   box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
 }
 
-/* ===== LinkedIn 部分 ===== */
+/* ===== LinkedIn Section ===== */
 .linkedin-section {
   background: #f9f9f9;
   color: #111;
@@ -135,7 +135,7 @@ main {
   font-weight: bold;
 }
 
-/* ===== 联系表单 ===== */
+/* ===== Contact Form ===== */
 .contact-form-section {
   background: #f9f9f9;
   border-radius: 16px;
@@ -219,7 +219,7 @@ main {
   box-shadow: 0 4px 12px rgba(59, 179, 179, 0.3);
 }
 
-/* ===== 联系页面响应式设计 ===== */
+/* ===== Contact Page Responsive Design ===== */
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;

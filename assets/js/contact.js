@@ -1,60 +1,56 @@
-/* ===== 联系页面专用JavaScript功能 ===== */
+/* ===== Contact Page Specific JavaScript Features ===== */
 
-// ===== 联系页面区块导航 =====
+// ===== Contact Page Section Navigation =====
 
-// 定义页面区块，按顺序排列
+// Define page sections in order
 const sections = ['#contact-info', '#linkedin', '#contact-form'];
 
 /**
- * 获取当前所在的区块索引
+ * Get the index of the current section (fixed version)
  */
 function getCurrentSectionIndex() {
   const scrollPosition = window.scrollY;
-  const headerHeight = document.querySelector('header').offsetHeight;
+  const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
   
-  // 为每个区块检查当前滚动位置
-  for (let i = 0; i < sections.length; i++) {
+  // Special case: if near top of the page, return first section
+  if (scrollPosition < 100) {
+    return 0;
+  }
+  
+  // Check from the last section backward to ensure it gets detected correctly
+  for (let i = sections.length - 1; i >= 0; i--) {
     const section = document.querySelector(sections[i]);
     if (section) {
-      const sectionTop = section.offsetTop - headerHeight - 50;
-      const nextSection = document.querySelector(sections[i + 1]);
-      let sectionBottom;
+      const sectionTop = section.offsetTop - headerHeight - 100;
       
-      if (nextSection) {
-        sectionBottom = nextSection.offsetTop - headerHeight - 50;
-      } else {
-        // 最后一个区块，到页面底部
-        sectionBottom = document.body.scrollHeight;
-      }
-      
-      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+      if (scrollPosition >= sectionTop) {
+        console.log(`Current section: ${sections[i]} (index: ${i})`);
         return i;
       }
     }
   }
   
-  // 默认情况
-  if (scrollPosition < 200) {
-    return 0;
-  }
-  
-  return sections.length - 1;
+  // Default return: first section
+  return 0;
 }
 
 /**
- * 滚动到下一个区块
+ * Scroll to the next section
  */
 function scrollToNextSection() {
   const currentIndex = getCurrentSectionIndex();
+  console.log(`Next: Current section index: ${currentIndex}`);
   
   if (currentIndex < sections.length - 1) {
-    // 如果不是最后一个区块，滚动到下一个区块
+    // If not the last section, scroll to the next section
     const nextIndex = currentIndex + 1;
+    console.log(`Scrolling to next section: ${sections[nextIndex]}`);
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToSection(sections[nextIndex]);
     }
   } else {
-    // 如果在最后一个区块（表单），滚动到页面底部（footer）
+    // If at the last section (form), scroll to bottom of the page (footer)
+    console.log('Scrolling to bottom');
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToBottom();
     }
@@ -62,39 +58,61 @@ function scrollToNextSection() {
 }
 
 /**
- * 滚动到上一个区块
+ * Scroll to the previous section (fixed version)
  */
 function scrollToPreviousSection() {
   const scrollPosition = window.scrollY;
   const pageHeight = document.body.scrollHeight - window.innerHeight;
   
-  // 如果在页面底部，返回到最后一个区块
-  if (scrollPosition >= pageHeight - 50) {
+  console.log(`Previous: scrollPosition: ${scrollPosition}, pageHeight: ${pageHeight}`);
+  
+  // Get the current section index
+  const currentIndex = getCurrentSectionIndex();
+  console.log(`Previous: Current section index: ${currentIndex}`);
+  
+  // Check if we're really in the footer area (beyond the bottom of the last section)
+  const lastSection = document.querySelector(sections[sections.length - 1]);
+  let isInFooterArea = false;
+  
+  if (lastSection) {
+    const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
+    const footerThreshold = lastSectionBottom + 50; // footer threshold
+    
+    console.log(`Last section bottom: ${lastSectionBottom}, current scroll: ${scrollPosition}, footer threshold: ${footerThreshold}`);
+    
+    isInFooterArea = scrollPosition > footerThreshold;
+  }
+  
+  // Only scroll back to last section if really in the footer area
+  if (isInFooterArea) {
+    console.log('In footer area, scrolling to last section');
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToSection(sections[sections.length - 1]);
     }
     return;
   }
   
-  const currentIndex = getCurrentSectionIndex();
-  
+  // Standard section navigation logic - can go up from any section
   if (currentIndex > 0) {
-    // 滚动到上一个区块
+    // Scroll to previous section
+    const prevIndex = currentIndex - 1;
+    console.log(`Scrolling to previous section: ${sections[prevIndex]}`);
     if (window.CellWaveCommon) {
-      window.CellWaveCommon.scrollToSection(sections[currentIndex - 1]);
+      window.CellWaveCommon.scrollToSection(sections[prevIndex]);
     }
   } else {
-    // 如果在第一个区块，滚动到页面顶部
+    // If at the first section, scroll to top of the page
+    console.log('Scrolling to top');
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToTop();
     }
   }
 }
 
-// ===== 联系页面箭头导航逻辑 =====
+// ===== Contact Page Arrow Navigation Logic =====
 
 /**
- * 更新联系页面箭头显示状态
+ * Update the visibility of arrows on the contact page
  */
 function updateContactArrowDisplay() {
   const arrowDown = document.getElementById('arrowDown');
@@ -104,40 +122,40 @@ function updateContactArrowDisplay() {
   
   if (!arrowDown || !arrowUp) return;
   
-  // 在顶部 (前200px)
+  // At the top (within first 200px)
   if (scrollPosition < 200) {
     arrowDown.style.display = 'flex';
     arrowUp.style.display = 'none';
   }
-  // 在底部 (最后50px)
-  else if (scrollPosition >= pageHeight - 50) {
+  // At the bottom (last 100px)
+  else if (scrollPosition >= pageHeight - 100) {
     arrowDown.style.display = 'none';
     arrowUp.style.display = 'flex';
   }
-  // 在中间部分
+  // In the middle
   else {
     arrowDown.style.display = 'flex';
     arrowUp.style.display = 'flex';
   }
 }
 
-// ===== 表单处理 =====
+// ===== Form Handling =====
 
 /**
- * 处理联系表单提交
+ * Handle contact form submission
  */
 function handleFormSubmit(e) {
-  // Netlify Forms会自动处理表单提交
-  // 这里可以添加客户端验证或其他处理逻辑
+  // Netlify Forms automatically handles form submission
+  // You can add client-side validation or other logic here
   
-  // 显示提交成功消息
+  // Show submission success message
   setTimeout(() => {
     alert('Thank you for your message! We will get back to you soon.');
   }, 100);
 }
 
 /**
- * 初始化表单事件
+ * Initialize form event listeners
  */
 function initFormEvents() {
   const contactForm = document.getElementById('contactForm');
@@ -146,17 +164,17 @@ function initFormEvents() {
   }
 }
 
-// ===== 事件监听器 =====
+// ===== Event Listeners =====
 
 /**
- * 联系页面专用滚动事件监听器
+ * Contact page specific scroll event listener
  */
 function initContactScrollListener() {
   window.addEventListener('scroll', function() {
-    // 调用联系页面的箭头更新函数
+    // Call contact page arrow update function
     updateContactArrowDisplay();
     
-    // 调用通用的滚动动画函数
+    // Call common scroll animation handler
     if (window.CellWaveCommon) {
       window.CellWaveCommon.handleScrollAnimations();
     }
@@ -164,10 +182,10 @@ function initContactScrollListener() {
 }
 
 /**
- * 联系页面初始化
+ * Initialize the contact page
  */
 function initContactPage() {
-  // 为箭头按钮添加点击事件
+  // Add click events for arrow buttons
   const arrowDown = document.getElementById('arrowDown');
   const arrowUp = document.getElementById('arrowUp');
   
@@ -181,17 +199,17 @@ function initContactPage() {
     arrowUp.title = 'Previous Section';
   }
   
-  // 初始化表单事件
+  // Initialize form events
   initFormEvents();
   
-  // 初始化滚动监听器
+  // Initialize scroll listener
   initContactScrollListener();
   
-  // 初始化箭头显示状态
+  // Initialize arrow display state
   updateContactArrowDisplay();
 }
 
-// ===== 页面加载完成后初始化 =====
+// ===== Initialize on page load =====
 document.addEventListener('DOMContentLoaded', function() {
   initContactPage();
 });

@@ -1,18 +1,18 @@
-/* ===== 应用页面专用JavaScript功能 ===== */
+/* ===== Application Page Specific JavaScript Features ===== */
 
-// ===== 应用页面区块导航 =====
+// ===== Section Navigation for Application Page =====
 
-// 定义页面区块，按顺序排列
+// Define the page sections in order
 const sections = ['#app-nav', '#deadcell', '#scrna-workflow', '#cardio', '#monocytes', '#transfected', '#transfected-example'];
 
 /**
- * 获取当前所在的区块索引
+ * Get the index of the current section
  */
 function getCurrentSectionIndex() {
-  const scrollPosition = window.scrollY + window.innerHeight / 2; // 使用屏幕中心点检测
+  const scrollPosition = window.scrollY + window.innerHeight / 2; // Use the vertical center of the viewport
   const headerHeight = document.querySelector('header').offsetHeight;
   
-  // 从后往前检查，确保更精确的匹配
+  // Check from bottom to top for better matching
   for (let i = sections.length - 1; i >= 0; i--) {
     const section = document.querySelector(sections[i]);
     if (section) {
@@ -24,24 +24,24 @@ function getCurrentSectionIndex() {
     }
   }
   
-  // 默认返回第一个section
+  // Default to the first section
   return 0;
 }
 
 /**
- * 滚动到下一个区块
+ * Scroll to the next section
  */
 function scrollToNextSection() {
   const currentIndex = getCurrentSectionIndex();
   
   if (currentIndex < sections.length - 1) {
-    // 如果不是最后一个区块，滚动到下一个区块
+    // If not the last section, scroll to the next one
     const nextIndex = currentIndex + 1;
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToSection(sections[nextIndex]);
     }
   } else {
-    // 如果在最后一个区块（transfected-example），滚动到页面底部（footer）
+    // If already at the last section, scroll to the bottom (footer)
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToBottom();
     }
@@ -49,13 +49,13 @@ function scrollToNextSection() {
 }
 
 /**
- * 滚动到上一个区块
+ * Scroll to the previous section
  */
 function scrollToPreviousSection() {
   const scrollPosition = window.scrollY;
   const pageHeight = document.body.scrollHeight - window.innerHeight;
   
-  // 如果在页面底部，返回到最后一个区块
+  // If at the bottom of the page, go to the last section
   if (scrollPosition >= pageHeight - 50) {
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToSection(sections[sections.length - 1]);
@@ -66,22 +66,22 @@ function scrollToPreviousSection() {
   const currentIndex = getCurrentSectionIndex();
   
   if (currentIndex > 0) {
-    // 滚动到上一个区块
+    // Scroll to the previous section
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToSection(sections[currentIndex - 1]);
     }
   } else {
-    // 如果在第一个区块，滚动到页面顶部
+    // If already at the first section, scroll to the top
     if (window.CellWaveCommon) {
       window.CellWaveCommon.scrollToTop();
     }
   }
 }
 
-// ===== 应用页面箭头导航逻辑 =====
+// ===== Arrow Navigation Logic for Application Page =====
 
 /**
- * 更新应用页面箭头显示状态
+ * Update visibility of arrow buttons on the application page
  */
 function updateApplicationsArrowDisplay() {
   const arrowDown = document.getElementById('arrowDown');
@@ -91,34 +91,34 @@ function updateApplicationsArrowDisplay() {
   
   if (!arrowDown || !arrowUp) return;
   
-  // 在顶部 (前200px)
+  // At the top (first 200px)
   if (scrollPosition < 200) {
     arrowDown.style.display = 'flex';
     arrowUp.style.display = 'none';
   }
-  // 在底部 (最后50px)
+  // At the bottom (last 50px)
   else if (scrollPosition >= pageHeight - 50) {
     arrowDown.style.display = 'none';
     arrowUp.style.display = 'flex';
   }
-  // 在中间部分
+  // In the middle
   else {
     arrowDown.style.display = 'flex';
     arrowUp.style.display = 'flex';
   }
 }
 
-// ===== 事件监听器 =====
+// ===== Event Listeners =====
 
 /**
- * 应用页面专用滚动事件监听器
+ * Scroll event listener specific to application page
  */
 function initApplicationsScrollListener() {
   window.addEventListener('scroll', function() {
-    // 调用应用页面的箭头更新函数
+    // Update arrows on scroll
     updateApplicationsArrowDisplay();
     
-    // 调用通用的滚动动画函数
+    // Trigger common scroll animation handler
     if (window.CellWaveCommon) {
       window.CellWaveCommon.handleScrollAnimations();
     }
@@ -126,10 +126,10 @@ function initApplicationsScrollListener() {
 }
 
 /**
- * 应用页面初始化
+ * Initialize the application page
  */
 function initApplicationsPage() {
-  // 为箭头按钮添加点击事件
+  // Assign click events to arrow buttons
   const arrowDown = document.getElementById('arrowDown');
   const arrowUp = document.getElementById('arrowUp');
   
@@ -143,14 +143,14 @@ function initApplicationsPage() {
     arrowUp.title = 'Previous Section';
   }
   
-  // 初始化滚动监听器
+  // Initialize scroll listener
   initApplicationsScrollListener();
   
-  // 初始化箭头显示状态
+  // Set initial arrow display state
   updateApplicationsArrowDisplay();
 }
 
-// ===== 页面加载完成后初始化 =====
+// ===== Run on DOM content loaded =====
 document.addEventListener('DOMContentLoaded', function() {
   initApplicationsPage();
 });

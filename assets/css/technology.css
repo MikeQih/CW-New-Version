@@ -1,14 +1,14 @@
-/* ===== 技术页面专用样式 ===== */
+/* ===== Styles Specific to Technology Page ===== */
 
-/* 技术页面主要内容区域重写 */
+/* Override main content area styles for the technology page */
 main {
-  padding: 0; /* 技术页面不需要默认padding */
+  padding: 0; /* No default padding needed for technology page */
   padding-top: 0;
-  max-width: none; /* 技术页面全宽 */
+  max-width: none; /* Full width for technology page */
   margin: 0;
 }
 
-/* ===== 通用区块样式 ===== */
+/* ===== General Section Styles ===== */
 .section {
   min-height: 100vh;
   display: flex;
@@ -92,7 +92,7 @@ main {
   max-width: 600px;
 }
 
-/* ===== 第一部分特殊样式 ===== */
+/* ===== Special Styles for First Section ===== */
 .hero-section {
   background: #fff;
 }
@@ -132,9 +132,9 @@ main {
   border-radius: 12px;
 }
 
-/* ===== 第二部分样式 ===== */
+/* ===== Second Section Styles ===== */
 .user-friendly-section {
-  background: #fafafa;
+  /* background: #fafafa; */
 }
 
 .user-friendly-media {
@@ -201,7 +201,7 @@ main {
   line-height: 1.4;
 }
 
-/* ===== 第三部分样式 ===== */
+/* ===== Third Section Styles ===== */
 .workflow-section {
   background: #fff;
 }
@@ -219,7 +219,7 @@ main {
   transform: scale(1.02);
 }
 
-/* ===== 技术页面响应式设计 ===== */
+/* ===== Responsive Design for Technology Page ===== */
 @media (max-width: 1024px) {
   .section {
     padding: 12vh 3vw 60px 3vw;
@@ -335,7 +335,7 @@ main {
   }
 }
 
-/* 大屏幕优化 */
+/* Large Screen Optimization */
 @media (min-width: 1400px) {
   .section {
     padding: 16vh 2vw 6vh 2vw;
